@@ -1,0 +1,129 @@
+%
+\section{Principal Bundles and Connections}
+%
+Fix a compact manifold $X$ and a Lie group $G$.
+%
+\begin{defn}
+A \ib{principal $G$-bundle} is a fiber bundle $\pi : P \to M$ with a smooth
+right $G$ action such that:
+\begin{enumerate}
+  \item The action of $G$ preserves the fibers of $\pi$, and gives each fiber
+  $P_x \defeq \pi\inv(x)$ the structure of a \ib{right $G$-torsor}, i.e. the
+  action of $G$ on $P_x$ is free and transitive.
+  \item For every point $x \in X$, there exists a \ib{local trivialization} of
+  $P$, i.e. a diffeomorphism $\varphi : P\vert_U \defeq \pi\inv(U) \to U \times G$
+  that is $G$-equivariant (where the action on $U \times G$ is right multiplication
+  with the second factor) and the following diagram commutes:
+  \[\begin{tikzcd}
+  P\vert_U \ar[rr, "\varphi"] \ar[dr, "\pi"'] && U \times G \ar[dl] \\
+  & U
+  \end{tikzcd}\]
+  where the map $U\times G \to U$ is projection onto the first factor.
+\end{enumerate}
+\end{defn}
+%
+\begin{exmp}
+Let $E \to X$ be a real vector bundle of rank $k$. For $x \in X$, let $\B_x$
+denote the set of all bases of the fiber $E_x$, i.e. the set of linear isomorphisms
+$\R^k \to E_x$. This has a natural right action of $\GL_k\R$ by precomposition.
+Furthermore, this action is free and transitive, giving $\B_x$ the structure
+of a $\GL_k\R$-torsor. Then let
+\[
+\B_{\GL_k\R}(E) \defeq \coprod_{x \in X}\B_x
+\]
+Using local trivializations of the vector bundle $E$, we equip $\B_{\GL_k\R}(E)$
+with the structure of a smooth manifold such that the map
+$\pi : \B_{\GL_k\R}(E) \to X$ taking $\B_x$ to $x$ is a submersion. This gives
+$\pi : \B_{GL_k\R} \to X$ the structure of a principal $\GL_k\R$-bundle, called
+the \ib{frame bundle} of $E$,  where the local trivializations are defined in terms of
+local trivializations of $E$.
+\end{exmp}
+%
+\begin{exmp}
+Let $E \to X$ be a rank $k$ vector bundle equipped with a fiber metric, i.e. a
+smoothly  varying inner product on the fibers $E_x$. Then the
+\ib{orthonormal frame bundle} of $E$, denoted $\B_{\mathrm{O}}(E)$, is the principal
+$\mathrm{O}_k$-bundle where the fiber over $x \in X$ is the $\mathrm{O}_k$-torsor
+of orthonormal bases for $E_x$.
+\end{exmp}
+%
+A near identical story holds for complex vector bundles -- from any complex
+vector bundle we get a principal $\mathrm{GL}_k\C$-bundle of frames, and if
+we fix a Hermitian fiber metric, we get a principal $\mathrm{U}_k$-bundle of
+orthonormal frames. \\
+
+Principal bundles can be thought bundles of symmetries of some other fiber bundle,
+which can be made precise using the notion of an associated bundle, which allows
+one to construct fiber bundles out of principal bundles.
+%
+\begin{defn}
+Let $P \to X$ be a principal $G$-bundle, and let $F$ be a smooth manifold with
+right $G$ action. The \ib{associated fiber bundle}, denoted $P \times_G F$
+(sometimes denoted $P \times^G F$) is the space
+\[
+P \times_G F \defeq (P \times F)/G
+\]
+where the right $G$-action on $F$ is the diagonal action, i.e.
+$(p,f)\cdot g = (p\cdot g, f\cdot g)$.
+\end{defn}
+%
+If instead we have a left $G$-action on $F$, we can turn it into a right action
+by defining $f \cdot g \defeq g\inv \cdot f$. As the name suggests, $P \times_G F$ is
+a fiber bundle.
+%
+\begin{exer}
+Let $\pi : P \to X$ a principal bundle. Given a smooth right action of $G$ on
+$F$, use local trivializations of $P \to X$ to show that the map taking an
+equivalence class $[p,f]$ to $\pi(p)$ gives $P\times_G F$ the structure of a fiber
+bundle over $X$ with model fiber $F$.
+\end{exer}
+%
+In the case that the model fiber is a vector space $V$, and the action is
+linear, the associated bundle $P \times_G V$ is a vector bundle.
+%
+\begin{exer} \enumbreak
+\begin{enumerate}
+  \item Let $E \to X$ be a rank $k$ vector bundle, and $\B_{\GL_k\R}(E)$ be its
+  $\GL_k\R$-bundle of frames. Let $\rho : \GL_k\R \to \GL_k\R$ be the
+  defining representation (i.e. the identity map). Show that the associated bundle
+  $\B_{\GL_k\R}(E) \times_{\GL_k\R} \R^k$ is isomorphic to $E$.
+  \item Further suppose that $E$ comes equipped with a fiber metric, and let
+  $\B_{\mathrm{O}}(E)$  be its orthonormal frame bundle. The associated
+  bundle $\B_{\mathrm{O}}(E) \times_{\mathrm{O}_k} \R^k$ is isomorphic to $E$
+  by a near identical proof as the previous part. How can one recover the fiber
+  metric?
+  \item Let $\rho^* : \GL_k \to \GL_k$ denote the dual representation of the
+  defining representation $\rho$. Show that the associated bundle
+  is isomorphic to the dual bundle $E^*$. In particular, this should
+  illuminate the distinction between the tangent and cotangent bundles.
+\end{enumerate}
+\end{exer}
+%
+Associated bundles have another nice feature -- their sections have
+a nice interpretation in terms of $G$-equivariant maps.
+%
+\begin{prop}
+Let $E = P \times_G F$ be an associated fiber bundle, and let
+$\Gamma(X,E)$ denote the space of global sections, i.e. the space of
+smooth maps $f : X \to E$ such that $\pi \circ f = \id_X$, where
+$\pi : E \to X$ denotes the projection map. Then there is a bijective correspondence
+\[
+\Gamma(X,E) \longleftrightarrow \set{G-\text{equivariant maps } P \to F}
+\]
+\end{prop}
+%
+\begin{proof}
+Let $\sigma : X \to E$ be a section. Then define the map
+$\widetilde{\sigma} : P \to F$ as follows: for $x \in X$, let $(p,f)$ be a
+representative for $\sigma(x)$. Then define $\widetilde{\sigma}(x) \defeq f$. \\
+
+In the other direction, let $\widetilde{\varphi} : P \to F$ be an equivariant
+map. Then define the section $\varphi : X \to E$ by
+$\varphi(x) = [p,\widetilde{\varphi}(p)]$.
+\end{proof}
+%
+\begin{exer}
+Verify that the map $\varphi$ defined above is well-defined. Verify the two
+constructions above are inverses to each other.
+\end{exer}
+%
