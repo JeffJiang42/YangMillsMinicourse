@@ -1,6 +1,8 @@
 %
 \section{Principal Bundles and Connections}
 %
+Good references for this material would be \cite{KobNom} and \cite{Tu} \\
+
 Fix a compact manifold $X$ and a Lie group $G$.
 %
 \begin{defn}
@@ -92,12 +94,25 @@ linear, the associated bundle $P \times_G V$ is a vector bundle.
   bundle $\B_{\mathrm{O}}(E) \times_{\mathrm{O}_k} \R^k$ is isomorphic to $E$
   by a near identical proof as the previous part. How can one recover the fiber
   metric?
-  \item Let $\rho^* : \GL_k \to \GL_k$ denote the dual representation of the
-  defining representation $\rho$. Show that the associated bundle
-  is isomorphic to the dual bundle $E^*$. In particular, this should
+  \item Let $\rho^* : \GL_k\R \to \GL_k\R$ denote the dual representation of the
+  defining representation $\rho$, so $\rho(A) = (A\inv)^T$. Show that the associated
+  bundle is isomorphic to the dual bundle $E^*$. In particular, this should
   illuminate the distinction between the tangent and cotangent bundles.
 \end{enumerate}
 \end{exer}
+%
+\begin{exmp}
+There are two important examples of associated bundles that we'll need to discuss
+the Yang-Mills equations.
+\begin{enumerate}
+  \item The bundle $\Ad P \defeq P \times_G G$ where $G$ acts on $G$ by conjugation.
+  \item The bundle $\ad P \defeq P \times_G \g$ (also denoted $\g_P$) where
+  the action is the adjoint action.
+\end{enumerate}
+Confusingly, the former is sometimes called the ``Adjoint bundle" and the
+latter is sometimes called the ``adjoint bundle," which makes it admittedly
+hard to distuinguish between them when speaking.
+\end{exmp}
 %
 Associated bundles have another nice feature -- their sections have
 a nice interpretation in terms of $G$-equivariant maps.
@@ -119,11 +134,248 @@ representative for $\sigma(x)$. Then define $\widetilde{\sigma}(x) \defeq f$. \\
 
 In the other direction, let $\widetilde{\varphi} : P \to F$ be an equivariant
 map. Then define the section $\varphi : X \to E$ by
-$\varphi(x) = [p,\widetilde{\varphi}(p)]$.
+$\varphi(x) = [p,\widetilde{\varphi}(p)]$ for any choice of $p \in P_x$.
 \end{proof}
 %
 \begin{exer}
 Verify that the map $\varphi$ defined above is well-defined. Verify the two
 constructions above are inverses to each other.
 \end{exer}
+%
+The main takeaway from the proposition is the motto that ``$G$-equivariant
+objects on $P$ descend to objects on $X$." \\
+
+Before we discuss connections on principal bundles, we introduce the concept of
+vector bundled valued forms.
+%
+\begin{defn}
+Let $E \to X$ be a vector bundle. An \ib{$E$-valued differential $k$-form} is
+a section of $\Lambda^kT^*X\otimes E$. We denote the space of $E$-valued $k$-forms
+by $\Omega^k_X(E)$. If $V$ is a fixed vector space, a \ib{$V$-valued differential
+$k$-form} is a $X\times V$-valued $k$-form, and we let $\Omega^k_X(V)$ denote the
+space of $V$-valued $k$-forms.
+\end{defn}
+%
+In a local frame $\set{e_i}$ for $E$, an $E$-valued $k$-form $\omega$ can be
+written uniquely as
+\[
+\omega = \omega^i \otimes e_i
+\]
+for $k$-forms $\omega^i \in \Omega^k_X$,so an $E$-valued $k$-form can be thought of
+as a vector of $k$-forms. We will usually omite the tensor symbol, and simply
+write $\omega = \omega^ie_i$. However, this does not transform tensorially with
+respect to coordinate changes on $X$ unless $E$ is a trivial bundle. The
+components of the vector transform tensorially with respect to coordinate changes,
+but the vector itself changes according to the transition functions of the vector
+bundle $E$. Given $E$-valued forms $\omega \in \Omega^k_X(E)$ and
+$\eta \in \Omega^\ell_X(E)$, we define their wedge product in a local trivialization to
+be
+\[
+\omega \wedge \eta \defeq  (\omega^i \wedge \eta^j)e_i \otimes e_j\
+\]
+which is an element of $\Omega^{k+\ell}_X(E \otimes E)$. \\
+
+For the most part, we will be concerned with Lie algebra valued forms,
+which are just $\g$-valued forms for a fixed Lie algebra $\g$. These
+forms have some additional operations coming from the Lie algebra structure
+of $\g$. Fix a basis $\set{\xi_i}$ for $\g$. This determines a global
+trivialization of the trivial bundle $X \times \g$, so any $\g$-valued
+$K$-form $\omega \in \Omega^k_X(\g)$ can be uniquely written as
+$\omega = \omega^i\xi_i$. Let
+$\omega \in \Omega^k_X(\g)$ and $\eta \in \Omega^\ell_X(\g)$. Then define their
+bracket to be
+\[
+[\omega\wedge\eta] \defeq (\omega^i \wedge \eta^j)[\xi_i,\xi_j]
+\]
+In other words, it is the composition
+\[\begin{tikzcd}
+\Omega^k_X(\g) \otimes \Omega^k_X(\g) \ar[r] & \Omega^{k+\ell}_X(\g \otimes \g) \ar[r] &
+\Omega^{k+\ell}(\g)
+\end{tikzcd}\]
+where the first map is the wedge product, and the second map is induced by the
+Lie bracket. Finally, since $X \times \g$ is a trivial bundle, the
+usual exterior derivative $d : \Omega^k_X \to \Omega^{k+1}_X$ extends to
+a well defined operator on $\Omega^k_X(\g)$, given by
+$d\omega = d\omega^i\xi_i$. \\
+
+We now discuss connections. Let $\pi : P \to X$ be a principal $G$-bundle, and
+let $\g$ be the Lie algebra of $G$. The projection map $\pi$ is a submersion,
+so it is constant rank. Therefore, the subset $V \subset TP$ where the fiber
+over $p$ is $\ker d\pi_p$ is a subbundle, called the \ib{vertical distribution}
+of $P$, giving us an exact sequence of vector bundles over $P$
+\[\begin{tikzcd}
+0 \ar[r] & V \ar[r] & TP \ar[r] & \pi^*TX \ar[r] & 0
+\end{tikzcd}\]
+%
+\begin{defn}
+A \ib{connection} on $P$ is a distribution $H \subset TP$ such that
+\begin{enumerate}
+  \item $V \oplus H = TP$ \\
+  \item $H_{p \cdot g} = d(R_g)_pH_p$, where $R_g : P \to P$ is the map
+  $p \mapsto p\cdot g$.
+\end{enumerate}
+The distribution $H$ is also called the \ib{horizontal distribution}.
+We let $\mathscr{A}(P)$ denote the space of connections on $P$.
+\end{defn}
+%
+Equivalently, it is a choice of $G$-invariant splitting of the exact sequence.
+The perspective of viewing a connection as a horizontal distribution is useful
+at times, but it is often more convenient for computations to rephrase a connection
+in terms of $\g$-valued forms. Let $\exp : \g \to G$ denote the exponential map.
+Given $X \in \g$ and $p \in P$, the exponential map determines a curve
+$\gamma_X$ with $\gamma_X(0) = p$ where
+\[
+\gamma_X(t) \defeq p \cdot \mathrm{exp}(tX)
+\]
+Since the action of $G$ preserves the fiber $P_{\pi(p)}$, the tangent vector
+\[
+\dt{\gamma}_X \defeq \frac{d}{dt}\bigg\vert_{t=0} \gamma_X(t)
+\]
+lies in $V_p$. Furthermore, since the action of $G$ on $P$ is free,
+we have that $\dt{\gamma}_X = 0$ if and only if $X = 0$. Finally,
+the mapping $X \mapsto \dt{\gamma}_X$ is linear, so we have that this
+gives an isomorphism $\g \to V_p$ by a dimension count. Doing this
+over all $p \in P$, this gives an isomorphism of $V$ with the trivial bundle
+$P \times \g$. Because of this, we will implicitly identify elements of
+$\g$ with the vertical vector fields they determine. One thing to note
+is how these vector fields transform with respect to the action of $G$.
+%
+\begin{prop}
+Let $X \in \g$, and let $\widetilde{X}$ denote the vertical vector field on $P$
+induced by $X$. For $g \in G$, let $R_g : P \to P$ be map given by the action of $g$.
+Then
+\[
+(R_g)_*\widetilde{X} = \widetilde{\Ad_{g\inv}X}
+\]
+\end{prop}
+%
+\begin{proof}
+We compute
+\begin{align*}
+((R_g)_*\widetilde{X}_p)
+&= (R_g)_*\left(\frac{d}{dt}\bigg\vert_{t=0}p\cdot\exp(tX)\right) \\
+&= \frac{d}{dt}\bigg\vert_{t=0}p\cdot(\exp(tX)g) \\
+&= (p\cdot g)(g\inv\exp(tX)g) \\
+&= (\widetilde{\Ad_{g\inv}X})_{p\cdot g}
+\end{align*}
+\end{proof}
+%
+Furthermore, the identification of the vertical distribution $V$ with the trivial
+bundle $X \times \g$ gives us a nice characterization of $E$-valued forms,
+when $E = P\times_G W$ is an associated bundle coming from a linear representation
+$\rho : G \to \GL(W)$.
+%
+\begin{prop}
+Let $P \to M$ be a principal bundle and $E$ the associated bundle coming from
+a linear representation $\rho : G \to \GL(W)$. Then there is a bijective
+correspondence
+\[
+\Omega^k_X(E) \leftrightarrow \set{\alpha \in \Omega^k_P(W) ~:~ R^*_g\alpha =
+\rho(g\inv)\alpha~,~ \iota_X\alpha = 0 \forall X \in \g}
+\]
+where we identify $X \in \g$ with its vertical vector field and
+$\iota_\xi$ denotes interior multiplication.
+\end{prop}
+%
+Morally, the correspondence comes from the fact that a form on $P$ descending
+to $X$ should satisfy $G$-invariance, and should be invariant in the vertical
+directions.
+%
+\begin{exer}
+Prove the previous proposition.
+\end{exer}
+%
+\begin{exer}
+Using the proposition above, prove that the space $\mathscr{A}(P)$ of connections
+is an affine space over $\Omega^1_X(\g_P)$, i.e. show that the difference
+$A_1 - A_2$ between two connections is an element of $\Omega^1_X(\g_P)$.
+\end{exer}
+%
+Now suppose we have a horizontal distribution $H \subset TP$. The decomposition
+$TP = V \oplus H$ gives us a projection map $TP \to V$ with kernel $H$.
+Identifying $V$ with $P \times \g$, the projection map can be idenfied with
+a $\g$-valued $1$-form $A \in \Omega^1_P(\g)$, called the
+\ib{connection $1$-form}. Using the transformation law for the vertical
+vector fields determined by $\g$, we get the following transformation law
+for the connection $1$-form $A$.
+%
+\begin{prop}
+A connection $1$-form $A \in \Omega^1_P(\g)$ satisfies
+\[
+R^*_gA = \Ad_{g\inv}A
+\]
+\end{prop}
+%
+\begin{proof}
+For $v \in T_pP$, decompose $v = X + h$ with $X \in \g$ and $h \in H_p$.
+We then compute
+\begin{align*}
+(R_g^*A)(v) &= (R^*_gA)(X + h) \\
+&= A_{p\cdot g}((R_g)_*X + (R_g)_*h) \\
+&= A_{p\cdot g}(\Ad_{g\inv} X) \\
+&= (\Ad_{g\inv}A)_p(X+h)
+\end{align*}
+where we use the fact that $H_p$ is the the kernel of $A_p$ and the fact that $H$
+is $G$-invariant.
+\end{proof}
+%
+Furthermore, since $A$ is given by projection onto the vertical distribution,
+we have that $\iota_XA = X$ for all $X \in \g$.
+%
+\begin{defn}
+Let $A \in \mathscr{A}(P)$ be a connection. Then the \ib{curvature of $A$},
+denoted $F_A$, is the $\g$-valued $2$ form
+\[
+F_A \defeq dA = \frac{1}{2}[A \wedge A]
+\]
+\end{defn}
+%
+\begin{prop} \enumbreak
+\begin{enumerate}
+  \item $R^*_gF_A = \Ad_{g\inv}F_A$.
+  \item $\iota_XF_A = 0$ for all $X \in \g$.
+\end{enumerate}
+\end{prop}
+%
+\begin{proof} \enumbreak
+\begin{enumerate}
+  \item We compute
+  \begin{align*}
+  R^*F_A &= R^*_gdA + \frac{1}{2}R^*_g[A \wedge A] \\
+  &= d(\Ad_{g\inv}A) + \frac{1}{2}[R^*_gA \wedge R^*_GA] \\
+  &= \Ad_{g\inv}dA + \frac{1}{2}[\Ad_{g\inv}A \wedge \Ad_{g\inv}A] \\
+  &= \Ad_{g\inv}F_A
+  \end{align*}
+  \item For this, we use a lemma.
+  \begin{lem*}[\ib{Cartan's magic formula}]
+  Let $X$ be a vector field, and $\omega$ a $k$-form. Let $\mathcal{L}_X$ denote
+  the Lie derivative along $X$. Then
+  \[
+  \mathcal{L}_X = d\iota_X\omega + \iota_Xd\omega
+  \]
+  \end{lem*}
+  Let $X \in \g$, interpreted as a vertical vector field on $P$. Then
+  we compute
+  \[
+  \iota_XF_A = \iota_XdA + \frac{1}{2}\iota_X[A \wedge A]
+  \]
+  We compute the two terms separately. Cartan's magic formula gives us that
+  \[
+  \mathcal{L}_XA = d\iota_XA + \iota_XdA
+  \]
+  Since $\iota_XF_A$ is the constant function with value $X$,
+  we have that $d\iota_XF_A$ is $0$, so we get $\mathcal{L}_XF_A = \iota_XdF_A$.
+  Using the definition of the Lie derivative, we compute
+  \begin{align*}
+  \mathcal{L}_XA &= \frac{d}{dt}\bigg\vert_{t=0}R^*_{\exp{tX}}A \\
+  &= \frac{d}{dt}\bigg\vert_{t=0}\Ad_{\exp(tX)\inv}A  \\
+  &= [-X, A]
+  \end{align*}
+  For the other term, we compute
+  \[
+  \frac{1}{2}\iota_X[A \wedge A] = \frac{1}{2}[\iota_XA \wedge A] = [X,A]
+  \]
+  adding these together gives us the desired result.
+\end{enumerate}
+\end{proof}
 %
