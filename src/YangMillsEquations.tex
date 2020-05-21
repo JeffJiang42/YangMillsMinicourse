@@ -1,0 +1,174 @@
+%
+\section{The Yang-Mills Equations}
+%
+To discuss the Yang-Mills equations, we will restrict to compact Lie groups
+$G$. As before, $X$ will denote an $n$-dimensional closed smooth manifold. \\
+
+Since $G$ is compact, its Lie algebra $\g$ is semisimple, so the Killing
+form $\langle\cdot,\cdot\rangle : \g \otimes \g \to \R$ is nondegenerate.
+For the rest of our discussion, $\langle\cdot,\cdot\rangle$ can be replaced by
+any inner product invariant under the Adjoint action, though it does us no
+harm to assume that it is the Killing form.
+%
+\begin{lem}
+Let $\langle\cdot,\cdot\rangle$ denote any Adjoint invariant inner product on $\g$.
+Then for $X_1,X_2,X_3 \in \g$, we have
+\[
+\langle[X_1,X_2],X_3\rangle = \langle X_1,[X_2,X_3]\rangle
+\]
+\end{lem}
+%
+\begin{proof}
+We compute
+\begin{align*}
+\langle[X_1,X_2],X_3\rangle &= \langle[-X_2,X_1],X_3\rangle \\
+&= \frac{d}{dt}\bigg\vert_{t=0}\langle\Ad_{\exp(-tX_2)}X_1,X_3\rangle \\
+&= \frac{d}{dt}\bigg\vert_{t=0}
+\langle\Ad_{\exp{tX_2}}\Ad_{\exp(-tX_2)}X_1,\Ad_{\exp(tX_2)}X_3\rangle \\
+&= \langle X_1,[X_2,X_3]\rangle
+\end{align*}
+\end{proof}
+%
+The form $\langle\cdot,\cdot\rangle$ induces a fiber metric on
+$P \times \g$, and invariance under the Adjoint action tells us that
+this fiber metric descends to a fiber metric on $\g_P$. This gives
+us pairings
+\begin{align*}
+\Omega^k_X(\g_P) \otimes \Omega^\ell_X(\g_P) &\to \Omega^{k+\ell}_X \\
+\omega \otimes \eta &\mapsto \langle\omega,\eta\rangle
+\end{align*}
+We now fix an orientation and a Riemannian metric $g$ on $X$. This gives us:
+\begin{enumerate}
+  \item A Riemannian volume form $\mathrm{Vol}_g \in \Omega^n_X$.
+  \item A Hodge star operator $\star : \Omega^k_X \to \Omega^{n-k}_X$.
+  \item Fiber metrics $\langle\cdot,\cdot\rangle_g$ on the bundles
+  $\Lambda^kT^*X$.
+\end{enumerate}
+%
+The Hodge star extends to $\g_P$-valued forms, which gives us inner products
+on $\Omega^k_X(\g_P)$ given by
+\[
+(\omega,\eta) \defeq \int_X \langle\omega,\star\eta\rangle
+\]
+We let $\norm{\cdot}$ denote the norm induced by these inner products. \\
+
+We now introduce the gauge group of a prinicipal $G$-bundle $P \to X$.
+%
+\begin{defn}
+Let $\pi : P \to X$ be a principal $G$-bundle. The \ib{gauge group}, denoted
+$\mathscr{G}(P)$, is the group of automorphisms of $P$, i.e. $G$-equivariant
+diffeomorphisms $\varphi : P \to P$ such that $\pi = \pi \circ \varphi$.
+An element of $\mathscr{G}(P)$ is called a \ib{gauge transformation}.
+\end{defn}
+%
+\begin{prop}
+The group $\mathscr{G}(P)$ is isomorphic to the group of sections
+$\Gamma(X,\Ad P)$, where the group operation is pointwise multiplication.
+\end{prop}
+%
+\begin{proof}
+We provide maps in both directions. Suppose we have an automorphism
+$\varphi : P \to P$. Since $\pi = \pi \circ \varphi$, the map $\varphi$ preserves
+the fibers of $\pi$. Therefore, for any $p \in P$, we have that
+$p$ and $\varphi(p)$ differ by the action of some $g_p \in G$. The mapping
+$g_\varphi : P \to G$ taking $p \mapsto g_p$ is easilty verified to be
+equivariant with respect to the conjugation action of $G$, so it defines
+a section of $\Ad P$ \\
+
+In the other direction, given a $G$-equivariant map
+$f : P \to G$, we get a bundle automorphism $\varphi_f : P \to P$
+where  $\varphi_f(p) = p \cdot f(p)$. The two maps we constructed are clearly inverse
+to each other, giving us the desired correspondence.
+\end{proof}
+%
+The gauge group $\mathscr{G}(P)$ acts on the space $\Omega^1_P(\g)$ of
+$\g$-valued forms by pullback. We claim that it preserves the
+subspace $\mathscr{A}(P) \subset \Omega^1_P(\g)$.
+%
+\begin{prop}
+For a connection $A \in \mathscr{A}(P)$ and a gauge transformation
+$\varphi : P \to P$, we have
+\begin{enumerate}
+  \item $R_g^*A = \Ad_{g\inv}\varphi^*A$.
+  \item $\iota_X\varphi^*A = X$ for all $X \in \g$.
+\end{enumerate}
+Equivalently, if we let $g_\varphi : P \to G$ denote the equivariant map
+associated to $\varphi$, we have
+\[
+\varphi^*A = \Ad_{g\inv_\varphi A} + g_\varphi^*\theta
+\]
+where $\theta \in \Omega^1_G(\g)$ is the Maurer-Cartan form.
+\end{prop}
+%
+\begin{exer}
+Prove the previous proposition.
+\end{exer}
+%
+\begin{prop}
+Let $A \in \mathscr{A}(P)$ be a connection, $\varphi : P \to P$ a gauge
+transformation, and $g_\varphi : P \to G$ the associated equivariant map.
+Then
+\[
+F_{\varphi^*A} = \Ad_{g_\varphi\inv}F_A
+\]
+\end{prop}
+%
+\begin{proof}
+We compute
+\begin{align*}
+&F_{\varphi^*A} = d(\Ad_{g_\varphi\inv} A + g_\varphi^*\theta)
++ \frac{1}{2}[\Ad_{g_\varphi\inv} A + g_\varphi^*\theta\wedge
+\Ad_{g_\varphi\inv} A + g_\varphi^*\theta] \\
+&= \Ad_{g_\varphi\inv}dA + g_\varphi^*d\theta + \frac{1}{2}
+\left([\Ad_{g_\varphi\inv}A\wedge \Ad_{g_\varphi\inv} A] + [\Ad_{g_\varphi\inv} A\wedge
+g_\varphi^*\theta] + [g^*_\varphi\theta\wedge \Ad_{g_\varphi\inv}A]
++ [g_\varphi^*\theta\wedge g_\varphi^*\theta] \right) \\
+&= \Ad_{g_\varphi\inv} dA + \frac{1}{2}[\Ad_{g_\varphi\inv}A, \Ad_{g_\varphi\inv} A]] \\
+&= \Ad_{g_\varphi\inv F_A}
+\end{align*}
+%
+The term
+\[
+g_\varphi^*d\theta + \frac{1}{2}[g_\varphi^*\theta\wedge g_\varphi^*\theta]
+\]
+vanishes due to the Maurer-Cartan equation. The term
+\[
+\frac{1}{2}\left([\Ad_{g_\varphi\inv} A\wedge
+g_\varphi^*\theta] + [g^*_\varphi\theta\wedge \Ad_{g_\varphi\inv}A]\right)
+\]
+vanishes due to the fact that $[\cdot,\cdot]$ is skew symmetric on $1$-forms.
+\end{proof}
+%
+With some of the preliminary results established, we arrive at the Yang-Mills
+functional.
+%
+\begin{defn}
+The \ib{Yang-Mills functional} is the map $L : \mathscr{A}(P) \to \R$ given by
+\[
+L(A) \defeq \norm{F_A}^2 = \int_X \langle F_A\wedge\star F_A\rangle
+\]
+\end{defn}
+%
+We note that for any gauge transformation $\varphi \in \mathscr{G}(P)$,
+we have $L(\varphi^*A) = L(A)$, since we have
+\[
+L(\varphi^*A)
+= \int_X\langle \Ad_{g_\varphi\inv}F_A\wedge\star\Ad_{g_\varphi\inv}F_A\rangle
+= \int_X\langle F_A\wedge\star F_A\rangle = L(A)
+\]
+because of this we say that $L$ is \ib{gauge invariant}. \\
+
+The Yang-Mills equations are the variational equations for the Yang-Mills
+functional.
+%
+\begin{prop}[\ib{The first variation}]
+Let $A$ be a local extremum of $L$. Then we have
+\[
+d_A\star F_A = 0
+\]
+\end{prop}
+%
+\begin{proof}
+
+\end{proof}
+%

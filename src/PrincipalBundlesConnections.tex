@@ -3,7 +3,7 @@
 %
 Good references for this material would be \cite{KobNom} and \cite{Tu} \\
 
-Fix a compact manifold $X$ and a Lie group $G$.
+Fix a close manifold $X$ (compact and without boundary) and a Lie group $G$.
 %
 \begin{defn}
 A \ib{principal $G$-bundle} is a fiber bundle $\pi : P \to M$ with a smooth
@@ -193,10 +193,8 @@ In other words, it is the composition
 \Omega^{k+\ell}(\g)
 \end{tikzcd}\]
 where the first map is the wedge product, and the second map is induced by the
-Lie bracket. Finally, since $X \times \g$ is a trivial bundle, the
-usual exterior derivative $d : \Omega^k_X \to \Omega^{k+1}_X$ extends to
-a well defined operator on $\Omega^k_X(\g)$, given by
-$d\omega = d\omega^i\xi_i$. \\
+Lie bracket. Finally, the usual exterior derivative $d : \Omega^k_X \to \Omega^{k+1}_X$
+extends to an operator on $\Omega^k_X(\g)$, given by $d\omega = d\omega^i\xi_i$. \\
 
 We now discuss connections. Let $\pi : P \to X$ be a principal $G$-bundle, and
 let $\g$ be the Lie algebra of $G$. The projection map $\pi$ is a submersion,
@@ -320,7 +318,30 @@ is $G$-invariant.
 \end{proof}
 %
 Furthermore, since $A$ is given by projection onto the vertical distribution,
-we have that $\iota_XA = X$ for all $X \in \g$.
+we have that $\iota_XA = X$ for all $X \in \g$. This gives us an identification
+of $\mathscr{A}(P)$ with the subset of $\Omega^1_P(\g)$ satisfying the conditions
+\begin{enumerate}
+  \item $R_g^*A = \Ad_{g\inv}A$
+  \item $\iota_XA = X$ for all $X \in \g$.
+\end{enumerate}
+%
+The second condition can be rephrased in terms of the \ib{Maurer-Cartan form}
+$\theta \in \Omega^1_G(\g)$, which is defined by
+\[
+\theta_g(v) = (dL_{g\inv})_g(v)
+\]
+where $L_{g\inv} : G \to G$ is left multiplication by $g\inv$. The action
+of $G$ on any $G$-torsor $X$ gives us a Maurer-Cartan form on $X$.
+%
+\begin{exer}
+Show that the second condition is equivalent to $A\vert_{P_x} = \theta$
+for any $x \in X$.
+\end{exer}
+%
+The Maurer-Cartan form $\theta$ satisfies the \ib{Maurer-Cartan equation}
+\[
+d\theta + \frac{1}{2}[\theta\wedge\theta] = 0
+\]
 %
 \begin{defn}
 Let $A \in \mathscr{A}(P)$ be a connection. Then the \ib{curvature of $A$},
@@ -378,4 +399,62 @@ F_A \defeq dA = \frac{1}{2}[A \wedge A]
   adding these together gives us the desired result.
 \end{enumerate}
 \end{proof}
+%
+In other words, the curvature $F_A$ descends to a $\g_P$-valued $2$-form
+on the base manifold $X$.
+%
+\begin{exer}
+Given a connection $A$ on a principal bundle $P$, prove that the curvature
+$F_A$ vanishes if and only if horizontal distribution $H$ defined by the
+kernel of $A$ is integrable. To prove this, reformulate Frobenius' theorem
+(a distribution is integrable if and only if it is involutive) in terms
+of the vanishing of a tensor, and show that this tensor (up to sign) is equal
+to $F_A$.
+\end{exer}
+%
+For vector bundles, a more familiar definition of a connection involves
+a first order operator on sections satisfying a Leibniz rule. Using
+the language of principal bundles and associated bundles, we recover
+this notion with the exterior covariant derivative.
+%
+\begin{defn}
+Let $E = P\times_G W$ be the associated vector bundle obtained from a
+linear representation $\rho : G \to \GL(W)$, and let $\dt{\rho} : \g \to \End(W)$
+denote the associated Lie algebra representation. The \ib{exterior covariant derviative}
+is the map
+\begin{align*}
+d_A : \Omega^p_X(E) &\to \Omega^{p+1}_X(E) \\
+\psi &\mapsto d\psi + \dt\rho(A) \wedge \psi
+\end{align*}
+\end{defn}
+%
+\begin{exer}
+Recall that a connection on a vector bundle $E \to X$ is given in a local
+trivialization by $d + A$ for some $\End(E)$-valued $1$-form $A$.
+Show that when $P = \B_{\GL_k\R}(E)$ is the frame bundle of a vector
+bundle $E$, the exterior covariant derivative on sections agrees with
+this definition.
+\end{exer}
+%
+For the most part, we will be concerned with situation when the vector
+bundle is $\g_P$, in which case, the formula is given by
+\[
+d_A\psi = d\psi + [A,\psi]
+\]
+Since $\mathscr{A}(P)$ is an affine space over $\Omega^1_X(\g_P)$, given
+a connection $A \in \mathscr{A}(P)$ and a $\g_P$-valued $1$-form
+$\eta \in \Omega^1_X(\g_P)$, we have that $A + \eta$ is also a connection.
+It can be shown that the curvature of $A+\eta$ is given by
+\[
+F_{A + \eta} = F_A + \frac{1}{2}[\eta\wedge\eta] + d_A\eta
+\]
+In particular, if we take a line of connections $A + t\eta$ with $t \in \R$,
+we have
+\[
+\frac{d}{dt}\bigg\vert_{t=0}F_{A+t\eta}
+= \frac{d}{dt}\bigg\vert_{t=0}F_A + \frac{t^2}{2}[\eta\wedge\eta] + td_A\eta
+= d_A\eta
+\]
+So the exterior covariant derivative on $\g_P$ measures the infitesimal
+change of the curvature of $A$ in the direction $\eta$.
 %
