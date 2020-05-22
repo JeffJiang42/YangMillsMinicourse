@@ -1,0 +1,336 @@
+%
+\section{Holomorphic Vector Bundles and Yang-Mills Connections}
+%
+A good references for this material would be \cite{Kob} and \cite{McDuff}\\
+
+Let $X$ denote a complex manifold.
+%
+\begin{defn}
+A \ib{holomorphic vector bundle} is a complex vector bundle $\pi : E \to X$
+such that the total space $E$ is a complex manifold and $\pi$ is holomorphic.
+\end{defn}
+%
+Given a holomorphic vector bundle $E \to X$, we can find a trivialization
+of $E$ such that the transition functions are holomorphic. In a neighborhood
+$U \subset X$ such that $E\vert_U$ is trivial, the smooth sections can
+be identified with functions $U \to \C^n$, and the holomorphic sections
+can be identified with the holomorphic functions $U \to \C^n$. We
+have a local operator $\dbar$, which we can apply componentwise to a local
+section to get an operator on smooth sections over $U$. Furthermore, since
+$\dbar$ annihilates holomorphic functions and the transition functions
+are holomorphic, we have that $\dbar$ glues to a well defined operator
+$\dbar_E : \mathcal{A}^0_X(E) \to \mathcal{A}^{0,1}_X(E)$. The holomorphic sections of $E$
+are then exactly the sections annihilated by $\dbar_E$. Furthermore, the operator
+$\dbar_E$ extends to operators $\dbar_E : \mathcal{A}^k_X(E) \to \mathcal{A}^{k+1}_X(E)$,
+and satifies the condition $\dbar_E^2 = 0$, since $\dbar^2 = 0$. The punchline
+is that the holomorphic structure on $E$ is entirely determined by this operator.
+%
+\begin{thm}
+Let $\pi : E \to X$ be a $C^\infty$ complex vector bundle, and let
+$D : \mathcal{A}^0_X(E) \to \mathcal{A}^{0,1}(E)$ be an operator satifying
+$D^2 = 0$. Then there exists a unique complex structure on $E$
+such that $\pi$ is holomorphic and $D$ coincides with the operator $\dbar_E$.
+\end{thm}
+%
+This can be seen as a linearized version of the Newlander-Nirenberg theorem.
+In particular, a holomorphic vector bundle $E \to X$ can be thought
+of as a smooth vector bundle along with a choice of operator $\dbar_E$.
+Since the operator $\dbar$ satisfies a Leibniz rule, the operator $\dbar_E$
+behaves like a connection. In a \emph{smooth} local trivialization,
+we can write
+\[
+\dbar_E = \dbar + B
+\]
+where $B$ is a smooth $\mathrm{M}_n\C$-valued $(0,1)$-form. Indeed,
+we have that the space of holomorphic structures on a smooth vector bundle
+$E \to X$ is an affine space over $\mathcal{A}^{1,0}(\End E)$. We
+let $\mathscr{C}(E)$ denote the space of holomorphic structures on $E$.\\
+
+We now restrict to the case where $X$ is a Riemann surface.
+%
+\begin{defn}
+The \ib{slope} of a holomorphic vector bundle $E \to M$ is
+\[
+\mu(E) \defeq \frac{c_1(E)}{\mathrm{rank}(E)}
+\]
+where we think of $c_1(E) \in H^2(X,\Z)$ as an integer via integration over $X$.
+\end{defn}
+%
+Sometimes the integer $c_1(E)$ is also referred to as the \ib{degree} of $E$.
+One thing to note is that the slope of a holomorphic vector bundle is
+independent of the holomorphic structure -- both the degree and rank are
+topological invariants, and only depend on the underlying $C^\infty$ complex
+vector bundle.
+%
+\begin{defn}
+A holomorphic vector bundle $E \to X$ is
+\begin{enumerate}
+  \item \ib{Stable} if for every holomorphic subbundle $F \subset E$,
+  we have $\mu(F) < \mu(E)$.
+  \item \ib{Semistable} if for every holomorphic subbundle $F \subset E$,
+  we have $\mu(F) \leq \mu(E)$.
+  \item \ib{Unstable} if $E$ is not semistable.
+\end{enumerate}
+\end{defn}
+%
+While the slope is a topological invariant, stability is not, since
+we only consider holomorphic subbundles -- which depend on the holomorphic structure.
+The terminology comes from Geometric Invariant Theory (GIT). The main
+result will use is:
+%
+\begin{thm}[\ib{The Harder-Narasimhan Filtration}]
+Let $E \to X$ be a holomorphic vector bundle. Then $E$ admits a canonical filtration
+\[
+0 = E_0 \subset E_1 \subset \cdots \subset E_n = E
+\]
+by holomorphic subbundles $E_i$ such that $E_i/E_{i-1}$ is semistable and
+\[
+\mu(E_1/E_0) > \mu(E_2/E_1) > \cdots > \mu(E_n/E_{n-1})
+\]
+\end{thm}
+%
+The proof of the above theorem is not extremely difficult, but we omit it.
+The main idea is that any holomorphic vector bundle has a unique
+maximal semistable subbundle, which we take to be $E_1$. We then take
+$E_2$ to be the preimage of the maximal semistable bundle of $E_1/E_0$ under
+the quotient map, and continue inductively. The slopes
+$\mu_i \defeq \mu(E_i/E_{i-1})$ gives us $n$ rational numbers. If $k$ denotes
+the rank of $E$, then we construct an element of $\Q^k$ by arranging
+the $\mu_i$ in order, and repeating the entry $\mu_i$ a total of
+$\mathrm{rank}(E_i/E_{i-1})$ times. We call this vector the
+\ib{Harder-Narasimhan type} of $E$. \\
+
+Our ultimate goal will be to relate moduli spaces of holomorphic vector
+bundles over $X$ to Yang-Mills connections. To see this, let $E \to X$ be
+a $C^\infty$ complex vector bundle of rank $n$, and fix a Hermitian metric
+on $E$. Then let $P \to X$ denote the principal $\mathrm{U}_n$-bundle of frames
+for $E$. We abbreviate the gauge group $\mathscr{G}(P)$ as $\mathscr{G}$.
+%
+\begin{prop}
+There is a bijection $\mathscr{A}(P) \leftrightarrow \mathscr{C}(E)$.
+\end{prop}
+%
+\begin{proof}
+We provide maps in both directions. Suppose we have a connection
+$A \in \mathscr{A}(P)$. Then $\mathcal{A}$ induces a covariant derivative
+$d_A : \mathcal{A}^0_X(E) \to \mathcal{A}^1_X(E)$. The $(0,1)$ part of $d_A$
+automatically satisfies $(d_A^{0,1})^2 = 0$, since $\mathcal{A}^2_X = 0$ by
+dimension reasons. Therefore, $d_A^{0,1}$ defines a holomorphic structure
+on $E$. \\
+
+In the other direction, given a holomorphic structure $\dbar_E$,
+there exists a unique Hermitian connection $A$ such that $d_A^{1,0} = \dbar_E$
+called the \ib{Chern connection}, which is a sort of analogue to the Levi-Civita
+connection in Riemannian geometry.
+\end{proof}
+%
+Let $\mathscr{G}_\C$ denote the group of smooth bundle automorphisms of $E$.
+Though both $\mathscr{G}_\C$ and $\mathscr{G}$ are both infinite dimensional,
+the former can be seen as the complexification of the latter. The space
+$\mathscr{C}(E)$ has a natural action by $\mathscr{G}_\C$ by conjugation.
+Furthermore, the orbits under this action are exactly the isomorphism
+classes of holomorphic structures on $E$. This is most easily seen by
+characterizing an isomorphism $\varphi : E \to F$ of holomorphic vector bundles
+as a smooth bundle isomorphism intertwining $\dbar_E$ and $\dbar_F$. However,
+the na\"ive quotient $\mathscr{C}(E)/\mathscr{G}_\C$ is poorly behaved
+(for example, it is not Hausdorff). To remedy this, we restrict our attention
+to semistable bundles. \\
+
+The relationship between $\mathscr{G}_\C$ and $\mathscr{G}$ as well
+as the identification of $\mathscr{A}(P)$ and $\mathscr{C}(E)$ suggests
+that isomorphism classes of holomorphic bundles should have something to
+do with gauge equivalence classes of connections on $P$. This is turns out
+to be true, and is an infinite dimensional version of the relationship between
+a GIT quotient and a symplectic quotient. To investigate further, we make a short
+digression regarding this relationship. \\
+
+Let $G$ be a reductive complex group, and $X$ a K\"ahler manifold with K\"ahler
+metric $\omega$, equipped with a ``nice" action of $G$. In the usual setting,
+$X$ is a smooth projective variety with a fixed embedding $X \hookrightarrow \CP^N$,
+the K\"ahler metric $\omega$ is the restriction of the Fubini-Study form,
+and the $G$-action is induced by a homomorphism $G \to \GL_{N+1}(\C)$. In general,
+the na\"ive quotient $X/G$ is not well behaved, and one restricts the action to a
+subset $X_{ss}$ consisting of \ib{semistable points} to construct the
+\ib{GIT quotient} $X_{ss}/G$. \\
+
+Then let $K \subset G$ denote the maximal compact subgroup, which has the
+property that its complexification is isomorphic to $G$. Suppose that
+the action of $K$ on $X$ is symplectic, i.e. the action of any $k \in K$
+preserves the K\"ahler metric on $X$. Let $\mathfrak{k}$ denote the
+Lie algebra of $K$. Then the infinitesimal action of $K$ is given by
+the Lie algebra homomorphism $\mathfrak{k} \to \mathfrak{X}(X)$ (where
+$\mathfrak{X}(X)$ denotes the space of vector fields on $X$) defined by
+$\xi \mapsto X_\xi$ where
+\[
+(X_\xi)_p \defeq \frac{d}{dt}\bigg\vert_{t=0}\mathrm{exp}(t\xi)\cdot p
+\]
+\begin{defn}
+A symplectic action of $K$ on $X$ is \ib{Hamiltonian} if for each
+$\xi \in \mathfrak{k}$, there exists a function $H_\xi : X \to \R$
+such that for all $p \in X$ and $v \in T_pX$, we have
+\[
+\omega_p((X_\xi)_p,v) = (dH_\xi)_p(v)
+\]
+and the mapping $\xi \mapsto H_\xi$ is $K$-equivariant with respect
+to the right actions of $K$ on $\mathfrak{k}$ by the Adjoint action
+and precomposition with left translation $L_k$ on $C^\infty(X)$. The
+functions $H_\xi$ are called \ib{Hamiltonian functions}.
+\end{defn}
+%
+\begin{defn}
+Suppose we have a Hamiltonian action of $K$ on $X$. A \ib{moment map}
+for the action is a $K$-equivariant map $X \to \mathfrak{k}^*$ (where the
+action on $\mathfrak{k}$ is the coadjoint action) such
+that for any $p \in X$, $v \in T_pX$, and $\xi \in \mathfrak{k}$, we have
+\[
+d\mu_p(v)(\xi) = \omega_p((X_\xi)_p,v)
+\]
+\end{defn}
+%
+One things to note is that the Hamiltonian functions can be
+recovered by the moment maps. If a Hamiltonian action admits a moment map,
+then
+\[
+H_\xi(p) = \mu(p)(\xi)
+\]
+The let $\langle\cdot,\cdot\rangle$ be an inner product on $\mathfrak{k}^*$
+that is invariant under the coadjoint action, and $\norm{\cdot}$ the induced
+norm. Since $X$ is compact, the map $\norm{\mu}^2 : X \to \R$ attains
+its minimum, and WLOG we assume that the minimum value is $0$.
+%
+\begin{defn}
+The \ib{symplectic quotient} of $X$ by $K$ is the quotient space
+\[
+\mu\inv(0)/K
+\]
+\end{defn}
+%
+The symplectic quotient can also be referred to as the \ib{symplectic reduction}
+or the \ib{Marsden-Weinstein quotient}.
+%
+\begin{thm}
+The symplectic quotient of $X$ by $K$ admits a unique K\"ahler structure
+such that the K\"ahler metric on $\mu\inv(0)/K$ is induced by the K\"ahler
+metric on $X$.
+\end{thm}
+%
+The relationship between the GIT quotient and the symplectic quotient is
+given by the Kempf-Ness theorem.
+%
+\begin{thm}[\ib{Kempf-Ness}]
+Suppose a complex reductive group $G$ acts on a K\"ahler manifold $X$
+such that the action of the maximal compact subgroup $K \subset G$ is
+Hamiltonian and admits a moment map $\mu : X \to \mathfrak{k}^*$. Then
+the $G$-orbit of any semistable point contains a unique $K$-orbit minimizing
+$\norm{\mu}^2$. This establishes a homeomorphism
+\[
+X_{ss}/G \longleftrightarrow \mu\inv(0)/K
+\]
+\end{thm}
+%
+We now want to relate the previous discussion to our situation. Using
+the identification of $\mathscr{A}(P)$ and $\mathscr{C}(E)$, we
+want the action of $\mathscr{G}_\C$ to play the role of the complex reductive
+group $G$ and the gauge group $\mathscr{G}$ to play the role of the maximal
+compact subgroup. Since the space $\mathscr{A}(P)$ is infinite dimensional,
+along with the groups $\mathscr{G}_\C$ and $\mathscr{G}$, we are working
+in an infinite dimensional setting, but we will gloss over the analytic
+details and work with them formally. \\
+
+Our first task is to realize $\mathscr{A}(P)$ as a ``K\"ahler manifold."
+Since $X$ is a surface, the Hodge star maps $\mathcal{A}^1_X(\g_P)$ to
+itself and squares to $-1$, so it defines a ``complex structure" on
+$\mathscr{A}(P)$, where we use the fact that $\mathscr{A}(P)$ is affine
+over the vector space $\mathcal{A}^1_X(\g_P)$ to identify the ``tangent space"
+of $\mathscr{A}(P)$ at a connection $A$ with $\mathcal{A}^1_X(\g_P)$.
+Furthermore, the fact that for $1$-forms $\omega,\eta \in \mathcal{A}^1_X(\g_P)$
+the pairing $\langle\omega\wedge\eta\rangle$ is skew-symmetric, we
+can identify the pairing
+\[
+\omega \otimes \eta \mapsto \int_X \langle\omega\wedge\eta\rangle
+\]
+as a ``symplectic form" on $\mathscr{A}(P)$. Together, these give
+$\mathscr{A}(P)$ the structure of a ``K\"ahler manifold." \\
+
+Our next task is to show that the action of $\mathscr{G}$ on $\mathscr{A}(P)$ is
+``Hamiltonian" with respect to this K\"ahler structure. One can
+identify the ``Lie algebra" of $\mathscr{G}$ with the space of
+sections $\Gamma(X,\g_P)$.
+%
+\begin{prop}
+The infinitesimal action of $\phi \in \Gamma(X,\g_P)$ on $\mathscr{A}(P)$ is
+given by the mapping $A \mapsto d_A\phi$.
+\end{prop}
+%
+\begin{proof}
+We compute the vector field at a connection $A \in \mathscr{A}(P)$ to be
+\begin{align*}
+&\frac{d}{dt}\bigg\vert_{t=0} \Ad_{\exp(t\phi)\inv} A + \exp(t\phi)^*\theta
+= -[\phi, A] + \frac{d}{dt}\bigg\vert_{t=0}(dL_{\exp(-t\phi)} d(\exp(t\phi))) \\
+&= [A,\phi] + \left(\frac{d}{dt}\bigg\vert_{t=0} dL_{\exp(-t\phi)}\right)d(\exp(0))
++ dL_{\exp(0)}\left(\frac{d}{dt}\bigg\vert_{t=0}d(\exp(t\phi))\right) \\[5pt]
+&= [A,\phi] + d\phi\\
+&= d_A\phi
+\end{align*}
+where for the third equality we use the product rule, and in the fourth equality
+we use the fact that $\exp(0) = \id$ and that the derivative of
+$\exp(t\phi)$ as $t \to 0$ is $\phi$.
+\end{proof}
+%
+\begin{prop}
+Let $\phi \in \Gamma(X,\g_P)$. Then the function
+\begin{align*}
+H_\phi : \mathscr{A}(P) &\to \R \\
+A &\mapsto \int_X\langle F_A\wedge\phi\rangle
+\end{align*}
+is a Hamiltonian function for $\phi$.
+\end{prop}
+%
+\begin{exer}
+Prove the previous proposition.
+\end{exer}
+%
+Since $\langle\cdot,\cdot\rangle$ is invariant under the adjoint action,
+the mapping $\phi \mapsto H_\phi$ is clearly $\mathscr{G}$ equivariant,
+so this tells us that the action is Hamiltonian. Furthermore,
+the computation we made identifies the mapping $A \mapsto F_A$ as the
+moment map for this action. To summarize, we have the following
+analogies
+%
+\begin{align*}
+\text{K\"ahler manifold }X &\longleftrightarrow \mathscr{A}(P) \\
+\text{Complex reductive group }G &\longleftrightarrow \mathscr{G}_\C \\
+\text{Maximal compact subgroup }K \subset G &\longleftrightarrow \mathscr{G} \\
+\text{Moment map }\mu &\longleftrightarrow A \mapsto F_A \\
+\text{Norm square of the moment map} \norm{\mu}^2 &\longleftrightarrow L
+\end{align*}
+%
+The last missing piece is something analogous to the Kempf-Ness theorem.
+%
+\begin{thm}[\ib{Narasimhan-Seshadri}]
+Let $\mathscr{A}_s(P) \subset \mathscr{A}(P)$ denote the subspace of connections
+that are absolute minimal for the Yang-Mills functional, and correspond
+to irreducible representations $\Gamma_\R \to \mathrm{U}_n$. Let $\mathscr{C}_s(E)$
+denote the subspace of stable holomorphic structures on $E$. The isomorphism
+classes of holomorphic bundles in $\mathscr{C}_s(E)$ admit unique
+Yang-Mills connections (up to gauge equivalence) minimizing the Yang-Mills functional.
+In other words, there is a homeomorphism
+\[
+\mathscr{A}_s(P)/\mathscr{G} \longleftrightarrow \mathscr{C}_s(E)/\mathscr{G}_\C
+\]
+\end{thm}
+%
+\begin{rem*}
+The original proof is more algebraic in flavor. A proof more in the spirit
+of the Atiyah-Bott paper was given by Donaldson in \cite{donaldson1983}.
+The spirit of this proof is carried on by the proof of Hermitian-Yang-Mills
+and the nonabelian Hodge theorem, which were both grew out of the
+developments from the Atiyah-Bott paper.
+\end{rem*}
+%
+One issue is that the Narasimhan-Seshadri theorem only works for
+stable bundles. However, in the case that the rank and degree of $E$
+are coprime, stability and semistability coincide for numerical reasons.
+For that reason, we will continue onwards with the assumption that the
+rank and degree of $E$ are coprime.
+%

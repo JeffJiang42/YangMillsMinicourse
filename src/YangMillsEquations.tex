@@ -104,6 +104,11 @@ where $\theta \in \Omega^1_G(\g)$ is the Maurer-Cartan form.
 Prove the previous proposition.
 \end{exer}
 %
+\begin{defn}
+Two connections $A_1$ and $A_2$ are \ib{gauge equivalent} if there exists
+a gauge transformation $\varphi \in \mathscr{G}(P)$ such that $\varphi^*A_1 = A_2$.
+\end{defn}
+%
 \begin{prop}
 Let $A \in \mathscr{A}(P)$ be a connection, $\varphi : P \to P$ a gauge
 transformation, and $g_\varphi : P \to G$ the associated equivariant map.
@@ -169,6 +174,133 @@ d_A\star F_A = 0
 \end{prop}
 %
 \begin{proof}
-
+Let $\eta \in \Omega^1_X(\g_P)$. We then compute
+\begin{align*}
+L(A) &= \int_X \langle F_{A+t\eta}\wedge\star F_{A+t\eta} \\
+&= \int_X\langle F_A + \frac{t^2}{2}[\eta\wedge\eta] + td_A\eta\wedge
+\star(F_A + \frac{t^2}{2}[\eta\wedge\eta] + td_A\eta)
+\end{align*}
+The term linear in $t$ is
+\[
+\int_X \langle F_A\wedge\star d_A\eta + \langle d_A\eta\wedge\star F_A\rangle =
+2(F_A,d_A\eta)
+\]
+Then let $d^*_A = (-1)^{2n+1}\star d_A\star$ denote the formal adjoint to
+$d_A$. Since $A$ is a local extremum, the term linear in $t$ must vanish,
+so for every $\eta$, we must have
+\[
+(F_A,d_A\eta) = (d^*_AF_A,\eta) = 0
+\]
+Then since up to sign $d^*_A = \star d_A \star$ and $\star$ is an isomorphism,
+we have $d_A\star F_A = 0$.
 \end{proof}
+%
+The first variation gives us what are referred to as the \ib{Yang-Mills equations}
+\begin{align*}
+d_A F_A &= 0 \\
+d_A^*F_A &= 0
+\end{align*}
+%
+\begin{defn}
+A \ib{Yang-Mills connection} is a connection $A \in \mathscr{A}(P)$ satisfying
+the Yang-Mills equations, i.e. a local extremum of $L$.
+\end{defn}
+%
+\begin{exer}
+In the case that $G = \mathrm{U}_1$, show that the curvature of a connection
+$A$ can be identified as an element of $\Omega^2_X$. Show that $A$ is a
+Yang-Mills connection if and only if $F_A$ is a harmonic form, i.e.
+$\Delta F_A = 0$, where $\Delta = dd^* + d^*d$ is the Hodge Laplacian.
+Use this to show that the space of Yang-Mills connections on a principal
+$\mathrm{U}_1$-bundle $P$ is a torsor over the vector space of closed $1$-forms
+on $X$.
+\end{exer}
+%
+The first equation is simply the \ib{Bianchi identity} and the second comes
+from the first variation.
+%
+\begin{prop}[\ib{The second variation}]
+Let $A$ be a Yang-Mills connection. Then for every $\eta \in \Omega^1_X(\g_P)$, we have
+\[
+\frac{d}{dt}\bigg\vert_{t=0}d^*_{A+t\eta}F_{A+t\eta} =
+d^*_Ad_A\eta + \star[\eta\wedge\star F_A]
+\]
+\end{prop}
+%
+The proof of this is similar to the proof of the first variation,
+and involves expanding out $d^*_{A+t\eta}F_{A+t\eta}$ and then taking
+the term linear in $t$. If we think of $L$ as a Morse function on
+$\mathscr{A}(P)$, for a Yang-Mills connection $A$, the operator
+$d^*_Ad_A + \star[\cdot\wedge\star F_A]$ can be interpreted as the Hessian
+of $L$ at the critical point $A$. In particular, if $\eta$ is
+tangent to the critical submanifold of Yang-Mills connections,
+one can use the Atiyah-Singer index theorem with this operator to
+compute the dimension of the space of Yang-Mills connections. \\
+
+We now restrict ourselves to the case where $X$ is a Riemann surface. Let
+$\Gamma_\R$ denote the central extension of $\pi_1(X)$ by
+$\R$ where if we let $J$ denote a generator for $\R$, we have the
+relation $\prod_{i}[a_i,b_i] = J$ where the $a_i$ and $b_i$ are the generators
+for the usual presentation of a closed surface of genus $g$. Using this
+group one can prove the following theorems, though we will omit the proofs.
+%
+\begin{thm}
+Every principal $G$-bundle $P \to X$ admits a Yang-Mills connection.
+\end{thm}
+%
+\begin{thm}
+There is a bijective correspondence
+\[
+\hom(\Gamma_\R,G)/G \longleftrightarrow\set{\text{Principal }G\text{-bundles }
+P \to X \text{with a Yang-Mills connection}}/\sim
+\]
+where the action of $G$ is conjugation and the equivalence relation is
+gauge equivalence.
+\end{thm}
+%
+The second theorem should be thought of an analogue of the classical
+Riemann-Hilbert correspondence.
+%
+\begin{exer}
+The classical Riemann-Hilbert correspondence gives a bijection
+\[
+\hom(\pi_1(X),G)/G \leftrightarrow \set{\text{Principal }G\text{-bundles } P \to X
+\text{ equipped with a flat connection } A}/\sim
+\]
+where the action of $G$ on $\hom(\pi_1(X),G)$ is by conjugation, and
+the equivalence relation is gauge equivalence of conenctions.
+The correspondence assigns to $\rho \in \hom(\pi_1(X),G)$ the associated bundle
+\[
+\widetilde{X} \times_{\pi_1(X)} G
+\]
+where $\widetilde{X}$ is the universal cover of $X$, and the connection
+is the one induced by descending the trivial connection on $\widetilde{X} \times G$
+to the quotient. In the other direction, the holonomy of a flat connection
+defines (up to conjugation by $G$) a homomorphism $\pi_1(X) \to G$. \\
+
+A principal $\mathrm{U}_1$-bundle $P \to X$ corresponds to a Hermitian line bundle
+$L \to X$ by taking the associated bundle $P\times_{\mathrm{U}_1}\C$ with
+the standard action of $\mathrm{U}_1$ on $\C$. Using this correspondence
+and the classical Riemann-Hilbert correspondence, show that there is a bijection
+\[
+\hom(\Gamma_\R,\mathrm{U}_1)/\mathrm{U}_1
+\longleftrightarrow\set{\text{Principal }\mathrm{U}_1\text{-bundles }
+P \to X \text{with a Yang-Mills connection}}/\sim
+\]
+\end{exer}
+%
+For the rest of our discussion, we will restrict to case where
+$G = \mathrm{U}_n$. We first make a remark involving the proofs of the
+two preceding theorems. As with the $\mathrm{U}_1$ case, the data of
+a principal $\mathrm{U}_n$-bundle $P \to X$ is equivalent to a
+rank $n$ complex vector bundle $E \to X$ equipped with a Hermitian metric.
+In the proofs, one shows that a Yang-Mills connection $A$ is equivalent to the
+choice of a Lie algebra element $X \in \mathfrak{u_n}$. Writing
+$X = -2\pi i \Lambda$ for a Hermitian matrix $\Lambda$, the Yang-Mills
+condition implies that the trace of $\Lambda$ is equal to the first Chern
+class of $E$, thought of as an integer by integrating over $X$. If
+we let $\lambda_i$ denote the $i^{th}$-eigenvalue (arranged in ascending order)
+and $n_i$ the multiplicity of $\lambda_i$, one can show that $n_i\lambda_i$ must
+also be integral. These observations will be useful when we relate
+Yang-Mills connections with holomorphic vector bundles.
 %
