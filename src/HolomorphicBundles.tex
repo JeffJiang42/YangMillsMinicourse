@@ -75,6 +75,30 @@ A holomorphic vector bundle $E \to X$ is
 %
 While the slope is a topological invariant, stability is not, since
 we only consider holomorphic subbundles -- which depend on the holomorphic structure.
+We also note that both the degree and rank are additive in exact sequences, which
+immediately gives us:
+%
+\begin{prop}
+Suppose we have the short exact sequence of holomorphic bundles
+\[\begin{tikzcd}
+0 \ar[r] & E \ar[r] & F \ar[r] & G \ar[r] & 0
+\end{tikzcd}\]
+Then we have
+\[
+\mu(F) = \frac{\mathrm{deg}(E) + \mathrm{deg}(G)}{\mathrm{rank}(E) + \mathrm{rank}(G)}
+\]
+\end{prop}
+%
+\begin{cor}
+Given a short exact sequence of holomorphic bundles
+\[\begin{tikzcd}
+0 \ar[r] & E \ar[r] & F \ar[r] & G \ar[r] & 0
+\end{tikzcd}\]
+If $\mu(E) \geq \mu(F)$, then $\mu(F) \geq \mu(G)$. Likewise, if $\mu(E) \leq \mu(F)$,
+then $\mu(F) \leq \mu(G)$.
+\end{cor}
+%
+In other words, slopes behave monotonically in short exact sequences.
 The terminology comes from Geometric Invariant Theory (GIT). The main
 result will use is:
 %
@@ -331,6 +355,29 @@ developments from the Atiyah-Bott paper.
 One issue is that the Narasimhan-Seshadri theorem only works for
 stable bundles. However, in the case that the rank and degree of $E$
 are coprime, stability and semistability coincide for numerical reasons.
-For that reason, we will continue onwards with the assumption that the
-rank and degree of $E$ are coprime.
+Our computations for the cohomology of the moduli space of holomorphic
+bundles of rank $n$ and degree $k$ will include the assumption that the
+rank and degree of $E$ are coprime. \\
+%
+
+In the finite dimensional case, when things are sufficiently, nice,
+the function $f = \norm{\mu}^2$ is an equivariant Morse-Bott function,
+which gives a stratification of the space $X$. Using Mayer-Vietoris, along
+with some other algebraic topology and equivariant cohomology, one can
+use this stratification to compute the equivariant cohomology of
+the space $X$ with respect to the equivariant cohomology of the strata.
+When the $G$ action is free, this tell us the regular cohomology of
+the quotient space $X/G$. In our situation, the Yang-Mills functional
+plays the role of the norm-squared of the moment map, and one would hope
+that the analysis needed to do equivariant Morse theory isn't too
+hard. Unfortunately, the analysis is \emph{very} hard. However, not all is
+lost. If we can find a nice stratification of $\mathscr{C}(E) = \mathscr{A}(P)$
+that \emph{looks like} it came from a nice equivariant Morse function, then
+we can still do the cohomology computations. In our case, we have a
+candidate for such a stratification. For a fixed Harder-Narasimhan type
+$\mu$, let $\mathscr{C}_\mu(E)$ denote the subspace of holomorphic
+structures on $E$ whose Harder-Narasimhan filtration has type $\mu$.
+This subspace is preserved by the action of $\mathscr{G}_\C$, and
+together all these subspaces give a stratification of the space
+$\mathscr{C}(E)$ called the \ib{Harder-Narasimhan stratification}.
 %

@@ -1,5 +1,274 @@
 %
 \section{Equivariant Cohomology}
 %
-References for this material include \cite{TuEC} and \cite{Kirwan}
+References for this material include \cite{TuEC} and \cite{Kirwan}. \\
+
+Our goal now is to compute the cohomology of the moduli space
+of semistable holomorphic bundles over $X$ of rank $n$ and degree $k$,
+denoted $N(n,k)$, in the case that $n$ and $k$ are coprime. Recall that
+$N(n,k)$ has a global quotient description as
+$N(n,k) = \mathscr{C}_{ss}(E)/\mathscr{G}_\C$. The computation of
+the cohomology of $N(n,k)$ uses the concept of \ib{equivariant cohomology},
+which is a cohomology theory for spaces with the action of a group. Before
+doing so, we give a bit of exposition on where equivariant cohomology fits
+into our story. \\
+
+Recall that we mentioned that a $\mathrm{U}_n$-Yang-Mills connection is
+equivalent to the choice of some Hermitian matrix, with some conditions
+on the eigenvalues. Using the correspondence between unitary connections
+and holomorphic structures, these conditions actually reflect the
+Harder-Narasimhan filtration of the corresponding holomorphic bundle.
+Using the perspective of unitary connections, Atiyah and Bott managed to show that
+the Harder-Narasimhan stratification is \ib{equivariantly perfect},
+i.e. looks like it came from an equivariantly perfect Morse function. In
+other words, we can understand the equivariant cohomology of $\mathscr{C}(E)$
+as being built from a simple formula involving the equivariant cohomology
+of the strata $\mathscr{C}_\mu(E)$. This gives us a formula
+for the equivariant cohomology of the semistable strata, from which
+we can compute the ordinary cohomology of the quotient $N(n,k)$.
+%
+\begin{defn}
+Let $G$ be a Lie group. A \ib{classifying space} for $G$ is a topological
+space $BG$ such that we have a functorial correspondence
+\[
+\set{\text{Principal }G\text{-bundles } P \to X} \longleftrightarrow
+\set{\text{Homotopy classes of maps }X \to BG}
+\]
+\end{defn}
+%
+Suppose $EG$ is a contractible space with a free action of $G$. Then the quotient
+map $EG \to EG/G$ is a principal $G$-bundle.
+%
+\begin{thm}
+The quotient space $BG = EG/G$ is a classifying space for $G$, which assigns to
+a homotopy class of maps $[f] : X \to BG$ the principal $G$-bundle $f^*EG$,
+which is independent of our choice of representative of $f$. Furthermore,
+The spaces $EG$ and $EG/G$ are unique up to homotopy equivalence.
+\end{thm}
+%
+Since the spaces $EG$ and $BG$ are only well-defined up to homotopy equivalence,
+we will call a specific choice of $EG$ and $BG$ a \ib{model} for $EG \to BG$.
+%
+\begin{defn}
+Let $G$ be a Lie group and $X$ a smooth manfold with an action of $G$. The
+\ib{equivariant cohomology} of $X$, denoted $H^\bullet_G(X,\Z)$, is the
+ordinary cohomology of the total space of the associated bundle
+$EG\times_G X \to BG$, i.e.
+\[
+H^\bullet_G(X,\Z) \defeq H^\bullet(EG\times_G X,\Z)
+\]
+\end{defn}
+%
+We note that since any two models for $EG \to BG$ are homotopy equivalent,
+this is well defined. In addition, we can define the equivariant cohomology over
+any other coefficient group we want. Intuitively, the equivariant cohomology of
+$X$ is is something like the regular cohomology of the quotient space $X/G$, but
+this isn'texactly true when the action isn't nice. The difference is essentially
+that the equivariant cohomology keeps track of stabilizer subgroups. To
+see this, note that we have a map $EG\times_G X \to X/G$ taking an
+equivalence class $[p,x] \in EG\times_G X$ to the orbit $[x] \in X/G$.
+%
+\begin{prop}
+The fiber of $EG\times_G X \to X/G$ over $[x]$ is the quotient space $EG/G_x$, where
+$G_x$ is the stabilizer of any representative of $[x]$.
+\end{prop}
+%
+\begin{proof}
+The fiber over $[x]$ is the subset $\set{[p,x\cdot g] ~:~ g \in G}\subset EG \times_G X$.
+equivalently, this is the subset $\set{[p\cdot g\inv,x] ~:~ g \in G}$. Using
+representatives of this form then gives the desired result.
+\end{proof}
+%
+We note that since $EG$ is contractible and the action of $G_x \subset G$
+is free on $EG$, the fiber over $[x]$ is a model for $BG_x$.
+%
+\begin{cor}
+If the action of $G$ on $X$ is free, then the map $EG\times_G X \to X/G$
+is a homotopy equivalence.
+\end{cor}
+%
+\begin{cor}
+If $X$ is contractible, then $H^\bullet_G(X,\Z) = H^\bullet(BG,\Z)$.
+\end{cor}
+%
+\begin{proof}
+The map $EG\times_G X \to X/G$ is a fiber bundle with contractible fiber $EG$.
+\end{proof}
+%
+We now return to the computation of the cohomology of $N(n,k)$. The heavy
+lifting for this computation comes from the following theorems:
+%
+\begin{thm}
+Let $E \to X$ be a holomorphic vector bundle with Harder-Narasimhan filtration
+\[
+0 = E_0 \subset E_1 \subset \cdots \subset E_r = E
+\]
+Choose a $C^\infty$ splitting of the Harder-Narasimhan filtration, giving us a direct
+sum decomposition as $C^\infty$ bundles
+\[
+E = \bigoplus_i D_i
+\]
+such that
+\[
+E_i = \bigoplus_{j < i} D_j
+\]
+Then we have
+\[
+H^\bullet_{\mathscr{G}_\C}(\mathscr{C}_\mu(E),\Q) \cong
+\bigotimes_{i=1}^r H^\bullet_{\mathscr{G}_\C}(\mathscr{C}_{ss}(D_i),\Q)
+\]
+\end{thm}
+%
+\begin{thm}
+Let $k_\mu$ denote the real codimension of $\mathscr{C}_\mu(E)$ inside
+of $\mathscr{C}(E)$, and let $P_{t,\mathscr{G}_\C}(X)$ denote the
+$\mathscr{G}_\C$-equivariant Poincar\'e series for a space $X$, i.e.
+\[
+P_{t,\mathscr{G}_\C}(X) \defeq \sum_i (\dim H^\bullet_{\mathscr{G}_\C}(X,\Q))t^i
+\]
+Then we have
+\[
+P_{t,\mathscr{G}_\C}(\mathscr{C}(E))
+= \sum_\mu t^{k_\mu}P_{t,\mathscr{G}_\C}(\mathscr{C}_\mu(E))
+\]
+\end{thm}
+%
+\begin{thm}
+The Poincar\'e seires for $B\mathscr{G}_\C$ is
+\[
+P_t(\mathscr{G}_\C) = \frac{\prod^n_{k=1}(1+t^{2k-1})^2g}
+{(1-t^2n)\prod_{k=1}^{n-1}(1-t^{2k})^2}
+\]
+where $g$ is the genus of $X$.
+\end{thm}
+%
+The first theorem tell us that we can understand the $\mathscr{G}_\C$-equivariant
+cohomology of the strata by understanding the $\mathscr{G}_\C$-equivariant
+cohomology of the semistable strata for lower dimensional bundles,
+which will give us an inductive procedure for computing the Poincar\'e series.
+The second theorem tells us that the equivariant cohomology of
+the entire space is a simple expression in terms of the equivariant cohomology
+of the strata. Since $\mathscr{C}(E)$ is contractible, the third
+theorem tells us that if we can compute the equivariant cohomology of
+all the strata except for the semistable locus, then we can compute the
+equivariant cohomology of the semistable strata. \\
+
+We first compute the codimension of the strata $\mathscr{C}_\mu(E)$. To do
+this, we will use some facts regarding infinitesimal variations of holomorphic
+structures.
+%
+\begin{prop}
+Let $E \to X$ be a holomorphic vector bundle. The infinitesimal variations
+of the holomorphic structure on $E$ are given by the Dolbeault cohomology group
+$H^1_{\dbar}(X, \End(E))$.
+\end{prop}
+%
+We are being purposefully vague when we say ``infinitesimal variation of holomorphic
+structure." Our main use for the result is to identify the normal directions
+of the strata $\mathscr{C}_\mu(E)$. The isomorphism class of a holomorphic
+structure on a $C^\infty$ vector bundle $E$ is given by a $\mathscr{G}_\C$-orbit
+in $\mathscr{C}(E)$, and the infinitesimal variation can be interpreted as the
+normal directions to this orbit. This gives us a way to compute the
+codimension of the strata $\mathscr{C}_\mu(E)$. From this perspective,
+the normal directions to $\mathscr{C}_\mu(E)$ consist of infinitesimal variations
+that change the type of the Harder-Narasimhan filtration. Explicitly,
+we have a holomorphic subbundle $\End'(E) \to \End(E)$ consisting of
+holomorphic endomorphisms of $E$ that preserve the Harder-Narasimhan filtration.
+Then we can identify $H^1_{\dbar}(X,\End'(E))$ with the infinitesimal varations
+consisting of the directions tangent to $\mathscr{C}_\mu(E)$. Furthermore, if
+we let $\End"(E)$ denote the quotient bundle $\End(E)/\End'(E)$,
+we can identify $\End"(E)$ with the holomorphic bundle endomorphism that do
+not preserve the Harder-Narasimhan filtration, which tells us that the complex
+codimension of $\mathscr{C}_\mu(E)$ in $\mathscr{C}(E)$ is the dimension of
+$H^1_{\dbar}(X,\End"(E))$. To compute this, we use Riemann-Roch.
+%
+\begin{thm}[\ib{Riemann-Roch}]
+Let $E \to X$ be a holomorphic vector bundle, where $X$ is genus $g$, and let
+$h^i(E) = \dim H^i_{\dbar}(X,E)$. Then
+\[
+h^0(E) - h^1(E) = c_1(E) + (1-g)\mathrm{rank}(E)
+\]
+\end{thm}
+%
+Because of Riemann-Roch, it suffices to compute the dimension of
+$H^0_{\dbar}(X,E)$ to compute $H^1_{\dbar}(X,E)$, and we want to apply
+this to the holomorphic bundle $\End"(E)$.
+%
+\begin{prop}
+\[
+H^0_{\dbar}(X,\End"(E)) = 0
+\]
+\end{prop}
+%
+\begin{proof}
+An element $g \in H^0_{\dbar}(X,\End"(E))$ is a global holomorphic endomorphism of
+$E$ that does not fix the Harder-Narasimhan filtration. By assuption,
+there exists some subbundle $E_i$ with $i > 0$ in the filtration such that
+$g(E_i) \not\subset E_i$. By minimality of $i$, we have that
+$g(E_{i-1}) \subset E_{i-1}$. Then let $k$ be the smallest integer such
+that $g(E_i) \subset E_k$. Then the restriction of $g$ to $E_k$ factors
+through the quotients to a nontrivial bundle homomorphism
+$E_i/E_{i-1} \to E_k/E_{k-1}$. We note that both $E_i/E_{i-1}$ and $E_k/E_{k-1}$
+are semistable and satisfy $\mu(E_i/E_{i-1}) > \mu(E_k/E_{k-1})$ by the properties
+of the Harder-Narasimhan filtration. Let $K \subset E_i/E_{i-1}$ be
+the smallest holomorphic subbundle containing the kernel, and
+$A \subset E_k/E_{k-1}$ the smallest holomorphic subbundle containing the image,
+giving us the short exact sequence of holomorphic bundles
+\[\begin{tikzcd}
+0 \ar[r] & K \ar[r] & E_i/E_{i-1} \ar[r] & A \ar[r] & 0
+\end{tikzcd}\]
+Semistability of $E_i/E_{i-1}$ implies that $\mu(A) \leq \mu(E_k/E_{k-1})$,
+so $\mu(A) < \mu(E_i/E_{i-1})$. However, semistability of $E_i/E_{i-1}$ also
+implies that $\mu(K) \leq \mu(E_i/E_{i-1})$, which would imply that
+$\mu(E_i/E_{i-1}) \leq \mu(A)$, a contradiction.
+\end{proof}
+%
+To use Riemann-Roch, we must identify the rank and degree of $\End"(E)$.
+Since both of these quantities are topological invariants, we may work
+in the $C^\infty$ category. We first compute the degree.
+Since $\End(E) \cong E^*\otimes E$, we have that
+$\mathrm{deg}(E) = 0$, where we use the fact that the degree of a bundle
+is the same as the degree of its determinant line, and the formula for
+the determinant line of a tensor product of bundles. Then since the
+degree is additive in exact sequences, we get
+\[
+\mathrm{deg}(\End'(E)) + \mathrm{deg}(\End"(E)) = 0
+\]
+We then compute $\mathrm{deg}(\End'(E))$, which will tell us $\mathrm{deg}(\End"(E))$.
+Fix a smooth splitting of the Harder-Narasimhan filtration, giving us a
+$C^\infty$ decomposition
+\[
+E = \bigoplus_i D_i
+\]
+This gives us the identification as smooth bundles
+\[
+\End'(E) = \bigoplus_{i \geq j}\hom(D_i,D_j)
+\]
+Then if we let $\mu(D_i) = k_i/n)i$, we get
+\[
+\mathrm{deg}(\End'(E)) = \sum_{i\geq j} k_jn_i - k_in_j
+\]
+where we use additivity of degree with respect to direct sums and
+the identification of $\hom(D_i,D_j)$ with $D_i^*\otimes D_j$. In the
+case $i = j$, we get $\hom(D_i,D_j) = \End(D_i)$, which has degree $0$,
+so we get
+\[
+\mathrm{deg}(\End'(E)) = \sum_{i > j} k_jn_i - k_in_j
+\]
+Negating this gives the degree of $\End"(E)$. \\
+
+For the rank, this comes easily from the $C^\infty$ decomposition
+\[
+\End"(E) = \bigoplus_{i > j}\hom(D_i,D_j)
+\]
+giving us
+\[
+\mathrm{rank}(\End"(E)) = \sum_{i < j} n_in_j
+\]
+Putting everything together gives us
+\[
+\dim(H^1_{\dbar}(X,\End"(E))) = \sum_{i > j}n_ik_j-k_in)j + n_in_j(g-1)
+\]
+which by our earlier discussion, is the complex codimension of the strata
+$\mathscr{C}_\mu(E)$.
 %
