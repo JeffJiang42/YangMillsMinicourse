@@ -1,5 +1,219 @@
 %
 \section{The Cohomology of the Moduli Spaces $N(n,k)$}
 %
+As before, we let $E \to X$ denote a $C^\infty$ complex vector bundle of
+rank $n$ and degree $k$, where $n$ and $k$ are coprime. Recall that this
+implies the notions of stability and semistability for a holomorphic structure
+on $E$ coincide in this case.\\
 
+The theorems in the previous section can be used to compute the
+equivariant cohomology $H^\bullet_{\mathscr{G}_\C}(\mathscr{C}_\mu(E),\Z)$
+using an inductive procedure involving the semistable strata for lower dimensional
+holomorphic bundle, which in turn lets us compute the $\mathscr{G}_\C$-equivariant
+cohomology of $\mathscr{C}_{ss}(E)$. However, this does not tell the cohomology
+of the quotient space $N(n,k) \defeq \mathscr{C}_{ss}(E)/\mathscr{G}_\C$, since
+the action of $\mathscr{G}_\C$ on $\mathscr{C}_{ss}(E)$ isn't free. To compute
+the cohomology, we must pass to a quotient of $\mathscr{G}_\C$ that acts freely,
+and then compute the equivariant cohomology with respect to that group.
+%
+\begin{prop}
+Let $\dbar_E$ be a stable holomorphic structure on $E$. Then the stabilizer
+subgroup of $\dbar_E$ is the central subgroup $C^\times \subset \mathscr{G}_\C$.
+\end{prop}
+%
+\begin{proof}
+Clearly $\C^\times$ is contained in the stabilizer of a holomorphic structure,
+so it suffices to show that any automorphism $g \in \mathscr{G}_\C$ fixing
+$\dbar_E$ is multiplication by an element of $\C^\times$. Since $g$
+fixes $\dbar_E$, we get a direct sum decomposition of $E$ as a holomorphic bundle
+\[
+E = E_1 \oplus \cdots \oplus E_\ell
+\]
+where the $E_i$ are eigenbundles of $g$. We then claim that this decomposition
+has only one term, which would verify our claim. Since $\dbar_E$ is stable,
+$\mu(E_1) < \mu(E)$. Similarly, we have that
+$\mu(E_2 \oplus\cdots\oplus E_\ell) < \mu(E)$.
+Furthermore, we have $E_1 \cong E/(E_2\oplus\cdots\oplus E_k)$.
+The exact sequence
+\[\begin{tikzcd}
+0 \ar[r] & E_2\oplus\cdots\oplus E_\ell \ar[r] & E \ar[r] & E_1
+\end{tikzcd}\]
+then implies that the slope of $E_1$ is larger than the slope of $E$, a contradiction.
+\end{proof}
+%
+This gives us
+\[
+H^\bullet(N(n,k),\Z) = H^\bullet_{\overline{\mathscr{G}}_\C}(\mathscr{C}_{ss}(E),\Z)
+\]
+where $\overline{\mathscr{G}}_\C \defeq \mathscr{G}_\C/\C^\times$. To
+compute the $\overline{\mathscr{G}}_\C$-equivariant cohomology, we use:
+\begin{enumerate}
+  \item $\mathscr{G}_\C$ deformation retracts onto $\mathscr{G}$.
+  \item $\overline{\mathscr{G}}_\C$ deformations retracts onto
+  $\overline{\mathscr{G}} \defeq \mathscr{G}/\mathrm{U}_1$
+\end{enumerate}
+The first point tells us that
+\[
+H^\bullet_{\mathscr{G}_\C}(\mathscr{C}_{ss}(E),\Z)
+\cong H^\bullet_\mathscr{G}(\mathscr{C}_{ss}(E),\Z)
+\]
+The second point tells us that we may replace $\overline{\mathscr{G}}_\C$ with
+$\overline{\mathscr{G}}$ to compute $H^\bullet(N(n,k),\Z)$. To do this, we
+must first understand the cohomology of the classifying space
+$B\overline{\mathscr{G}}$. We need the folliwing theorem:
+%
+\begin{thm}[\ib{Leray-Hirsch}]
+Let $E \to X$ be a fiber bundle with model fiber $F$ such that
+the inclusion $F \hookrightarrow E$ of a fiber induces a surjection
+in rational cohomology. Then
+\[
+H^\bullet(E,\Q) \cong H^\bullet(X,\Q) \otimes H^\bullet(F,\Q)
+\]
+\end{thm}
+%
+To use this, we use a functoriality property of classifying spaces.
+The exact sequence
+\[\begin{tikzcd}
+1 \ar[r] & \mathrm{U}_1 \ar[r] & \mathscr{G} \ar[r] & \overline{\mathscr{G}} \ar[r] & 1
+\end{tikzcd}\]
+induces a fibration
+\[\begin{tikzcd}
+B \mathrm{U}_1 \ar[r] & B\mathscr{G} \ar[d] \\
+& B\overline{\mathscr{G}}
+\end{tikzcd}\]
+To apply Leray-Hirsch, we want to show that the pullback map induced
+by $B \mathrm{U}_1 \to B\mathscr{G}$ induces a surjection
+\[
+H^\bullet(B\mathscr{G},\Q) \to H^\bullet(B \mathrm{U}_1, \Q)
+\]
+To do this, we provide a group homomorphism $\overline{\mathscr{G}} \to \mathrm{U}_1$,
+such that the composition $\mathrm{U}_1 \hookrightarrow \mathscr{G} \to \mathrm{U}_1$
+give maps of classifying spaces $B\mathrm{U}_1 \to B\mathscr{G} \to B\mathrm{U}_1$
+inducing an isomorphism $H^\bullet(B \mathrm{U}_1,\Q) \to H^\bullet(B \mathrm{U}_1,\Q)$.
+Fix a point $x \in X$, and let $g \in \mathscr{G}$, which we interpret as a
+smooth bundle automorphism of $E$ preserving the Hermitian metric. Restricting $g$
+to the fiber $E_x$ and taking the derterminant gives us our group homomorphism
+$\mathscr{G} \to \mathrm{U}_1$. Since $E$ is rank $n$, this is a degree $n$
+map. Then pullback induced map $B \mathrm{U}_1 \to B\mathscr{G} \to B \mathrm{U}_1$
+multiplies the generator of $H^\bullet(B \mathrm{U}_1, \Q) \cong \Q[x]$ by $n$,
+which is an isomorphism. Therefore, the map $B \mathrm{U}_1 \to B\mathscr{G}$
+induces an isomorphism on rational cohomology. We then note that the
+Poincar\'e series for $B \mathrm{U}_1$ is
+\[
+P_t(B \mathrm{U}_1) = \frac{1}{1-t^2} = 1 + t^2 + t^4 + \cdots
+\]
+So an application of Leray-Hirsch gives us
+\[
+P_t(B\overline{\mathscr{G}}) = P_t(\mathscr{G})(1-t^2)
+\]
+The next thing to do is to investigate the relationship between
+$\mathscr{G}$-equivariant cohomology and $\overline{\mathscr{G}}$-equivariant
+cohomology. Let $M$ be any $\overline{\mathscr{G}}$-space. The quotient map
+$\mathscr{G} \to \overline{\mathscr{G}}$ gives $M$ the structure of
+a $\mathscr{G}$-space. Furthermore, it induces a map
+$B\mathscr{G} \to B\overline{\mathscr{G}}$, giving us the pullback diagram
+\[\begin{tikzcd}
+E\mathscr{G} \times_{\mathscr{G}} M \ar[r] \ar[d] &
+E\overline{\mathscr{G}} \times_{\overline{\mathscr{G}}} M \ar[d] \\
+B\mathscr{G} \ar[r] & B\overline{\mathscr{G}}
+\end{tikzcd}\]
+The map $E\mathscr{G} \times_{\mathscr{G}} M
+\to E\overline{\mathscr{G}} \times_{\overline{\mathscr{G}}} M$ is a
+$B \mathrm{U}_1$-bundle, giving us the diagram
+\[\begin{tikzcd}
+B \mathrm{U}_1 \ar[r] \ar[d,equals]& E\mathscr{G} \times_{\mathscr{G}} M \ar[r] \ar[d] &
+E\overline{\mathscr{G}} \times_{\overline{\mathscr{G}}} M \ar[d] \\
+B \mathrm{U}_1 \ar[r] & B\mathscr{G} \ar[r] & B\overline{\mathscr{G}}
+\end{tikzcd}\]
+From this, we can deduce that the map
+$B \mathrm{U}_1 \to E\mathscr{G}\times_{\mathscr{G}} M$ induces a surjection
+on rational cohomology, so we can apply Leray-Hirsch to the bundle
+$E\mathscr{G} \times_{\mathscr{G}} M
+\to E\overline{\mathscr{G}} \times_{\overline{\mathscr{G}}} M$,
+giving us
+\[
+H^\bullet_{\mathscr{G}}(M,\Q) \cong
+H^\bullet(B\mathrm{U}_1, \Q) \otimes H^\bullet_{\overline{\mathscr{G}}}(M,\Q)
+\]
+In terms of Poincar\'e series, we have
+\[
+P_{t,\mathscr{G}}(M) = \frac{P_{t,\overline{\mathscr{G}}}(M)}{1-t^2}
+\]
+In our specific case, letting $M = \mathscr{C}_{ss}(E)$, we get
+\[
+P_t(N(n,k)) = (1-t^2)P_{t,\mathscr{G}}(\mathscr{C}_{ss}(E))
+\]
+In theory, this gives us all the results we need to compute the Ponicar\'e
+series for $N(n,k)$. However, it is not immediately clear how the pieces
+fit together. To get a better idea, we will worth through the case
+$n = 2$ and $k = 1$. We first take inventory of the facts and formulas we need.
+\begin{enumerate}
+  \item The Poincar\'e polynomial for the classifying space of the gauge group is
+  \[
+  P_t(B\mathscr{G}) = \frac{(1+t)^{2g}(1+t^3)^{2g}}{(1-t^4)(1-t^2)^2}
+  \]
+  \item  Let $k_\mu$ denote the real codimension of the strata $\mathscr{C}_\mu(E)$
+  inside of $\mathscr{C}(E)$. Then
+  \[
+  P_t(B\mathscr{G}) = \sum_{\mu}t^{k_\mu}P_{\mathscr{G}}(\mathscr{C}_\mu(E))
+  \]
+  \item Let the $D_i$ be the succesive quotients coming from the Harder-Narasimhan
+  filtration of $E$. Then
+  \[
+  P_{t,\mathscr{G}}(\mathscr{C}_\mu(E))
+  = \prod_iP_{t,\mathscr{G}(D_i)}(\mathscr{C}_{ss}(D_i))
+  \]
+  \item Let $n_i = \dim D_i$ and $k_i = \deg(D_i)$. Then the codimension
+  of the strata $\mathscr{C}_\mu(E)$ is given by
+  \[
+  2\sum_{i > j}n_ik_j-k_in)j + n_in_j(g-1)
+  \]
+\end{enumerate}
+%
+We now identify the possible Harder-Narasimhan types for a holomorphic strcture
+on $E$. If $E$ is a semistable bundle, then its Harder-Narasimhan filtration
+is just $0 \subset E$, and the Harder-Narasimhan type is $(1/2,1/2)$. Otherwise,
+there exists an rank one subbundle $L \subset E$ with $\mu(L) > \mu(E) = 1/2$, and
+the Harder-Narasimhan filration is $0 \subset L \subset E$. This means that the
+Harder-Narasimhan type of $E$ is entirely determined by the degree of $L$, since
+we can recover the degree of $E/L$ as $1 - \mathrm{deg}(L)$, so the
+Harder-Narasimhan type would be $(\mathrm{deg}(L), 1- \mathrm{deg}(L))$. For
+notational convenience, let $\mathscr{C}_r(E)$ denote the stratum corresponding
+to the type $(r+1,-r)$. Then we have
+\[
+P_{t,\mathscr{G}}(\mathscr{C}_r(E))
+= P_{t,\mathscr{G}(L)}(\mathscr{C}_{ss}(L)) P_{t,\mathscr{G}(E/L)}(\mathscr{C}_{ss}(E/L))
+\]
+We note that both $L$ and $E/L$ are both line bundles, which are automatically stable,
+so $\mathscr{C}_{ss}(L) = \mathscr{C}(L)$ and $\mathscr{C}_{ss}(E/L) = \mathscr{C}(E/L)$.
+Furthmore, our formula for the Poincar\'e series for the classifying space
+for the gauge group of a line bundle gives us
+\[
+P_t(B\mathscr{G}(L)) = P_t(B\mathscr{G}(E/L)) = \frac{(1+t)^{2g}}{1-t^2}
+\]
+Therefore, we get
+\[
+P_{t, \mathscr{G}}(\mathscr{C}_r(E)) = \left(\frac{(1+t)^{2g}}{1-t^2}\right)^2
+\]
+We now need to compute the codimensions $k_r$ of the strata $\mathscr{C}_r(E)$.
+Using the formula we derived earlier, we have
+\[
+k_r = 4r + 2g
+\]
+Putting everything together, we get the following identity
+\[
+\frac{(1+t)^{2g}(1+t^3)^{2g}}{(1-t^4)(1-t^2)^2} = P_{t,\mathscr{G}}(\mathscr{C}_{ss}(E))
++ \sum_{r=0}^\infty t^{4r+2g}\left(\frac{(1+t)^{2g}}{1-t^2}\right)^2
+\]
+After some manipulations and rearranging, this becomes
+\[
+P_{t, \mathscr{G}}(\mathscr{C}_{ss})(E)
+= \frac{(1+t)^{2g}(1+t^3)^{2g}-t^{2g}(1+t)^{4g}}{(1-t^4)(1-t^2)^2}
+\]
+Finally, using the relationship between $\mathscr{G}$-equivariant cohomology
+and $\overline{\mathscr{G}}$-equivariant cohomology, we get
+\begin{align*}
+P_t(N(2,1)) &= (1-t^2)P_{t,\mathscr{G}}(\mathscr{C}_{ss}(E)) \\
+&= \frac{(1+t)^{2g}(1+t^3)^{2g} - t^{2g}(1-t)^{4g}}{(1-t^4)(1-t^2)}
+\end{align*}
 %
