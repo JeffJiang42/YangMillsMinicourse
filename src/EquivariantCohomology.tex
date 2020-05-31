@@ -13,10 +13,11 @@ which is a cohomology theory for spaces with the action of a group. Before
 doing so, we give a bit of exposition on where equivariant cohomology fits
 into our story. \\
 
-Recall that we mentioned that a $\mathrm{U}_n$-Yang-Mills connection is
+Recall that we mentioned in passing that a $\mathrm{U}_n$-Yang-Mills connection is
 equivalent to the choice of some Hermitian matrix, with some conditions
 on the eigenvalues. Using the correspondence between unitary connections
-and holomorphic structures, these conditions actually reflect the
+and holomorphic structures, these conditions actually reflect the fact
+that the eigenvalues come from the slopes coming from the
 Harder-Narasimhan filtration of the corresponding holomorphic bundle.
 Using the perspective of unitary connections, Atiyah and Bott managed to show that
 the Harder-Narasimhan stratification is \ib{equivariantly perfect},
@@ -28,7 +29,7 @@ for the equivariant cohomology of the semistable strata, from which
 we can compute the ordinary cohomology of the quotient $N(n,k)$.
 %
 \begin{defn}
-Let $G$ be a Lie group. A \ib{classifying space} for $G$ is a topological
+Let $G$ be a topological group group. A \ib{classifying space} for $G$ is a topological
 space $BG$ such that we have a functorial correspondence
 \[
 \set{\text{Principal }G\text{-bundles } P \to X} \longleftrightarrow
@@ -50,7 +51,7 @@ Since the spaces $EG$ and $BG$ are only well-defined up to homotopy equivalence,
 we will call a specific choice of $EG$ and $BG$ a \ib{model} for $EG \to BG$.
 %
 \begin{defn}
-Let $G$ be a Lie group and $X$ a smooth manfold with an action of $G$. The
+Let $G$ be a Lie group and $X$ a smooth manifold with an action of $G$. The
 \ib{equivariant cohomology} of $X$, denoted $H^\bullet_G(X,\Z)$, is the
 ordinary cohomology of the total space of the associated bundle
 $EG\times_G X \to BG$, i.e.
@@ -63,7 +64,7 @@ We note that since any two models for $EG \to BG$ are homotopy equivalent,
 this is well defined. In addition, we can define the equivariant cohomology over
 any other coefficient group we want. Intuitively, the equivariant cohomology of
 $X$ is is something like the regular cohomology of the quotient space $X/G$, but
-this isn'texactly true when the action isn't nice. The difference is essentially
+this isn't exactly true when the action isn't nice. The difference is essentially
 that the equivariant cohomology keeps track of stabilizer subgroups. To
 see this, note that we have a map $EG\times_G X \to X/G$ taking an
 equivalence class $[p,x] \in EG\times_G X$ to the orbit $[x] \in X/G$.
@@ -92,7 +93,8 @@ If $X$ is contractible, then $H^\bullet_G(X,\Z) = H^\bullet(BG,\Z)$.
 \end{cor}
 %
 \begin{proof}
-The map $EG\times_G X \to X/G$ is a fiber bundle with contractible fiber $EG$.
+The map $EG\times_G X \to X/G$ is a fiber bundle with contractible fiber $EG$, so it
+is a homotopy equivalence.
 \end{proof}
 %
 We now return to the computation of the cohomology of $N(n,k)$. The heavy
@@ -117,7 +119,7 @@ Then we have
 H^\bullet_{\mathscr{G}_\C}(\mathscr{C}_\mu(E),\Q) \cong
 \bigotimes_{i=1}^r H^\bullet_{\mathscr{G}_\C(D_i)}(\mathscr{C}_{ss}(D_i),\Q)
 \]
-where $\mathscr{G}_\C(D_i)$ denotes the group of smoot bundle automorphisms of $D_i$.
+where $\mathscr{G}_\C(D_i)$ denotes the group of smooth bundle automorphisms of $D_i$.
 \end{thm}
 %
 \begin{thm}
@@ -135,7 +137,7 @@ P_{t,\mathscr{G}_\C}(\mathscr{C}(E))
 \end{thm}
 %
 \begin{thm}
-The Poincar\'e seires for $B\mathscr{G}_\C$ is
+The Poincar\'e series for $B\mathscr{G}_\C$ is
 \[
 P_t(\mathscr{G}_\C) = \frac{\prod^n_{k=1}(1+t^{2k-1})^2g}
 {(1-t^2n)\prod_{k=1}^{n-1}(1-t^{2k})^2}
@@ -175,7 +177,7 @@ the normal directions to $\mathscr{C}_\mu(E)$ consist of infinitesimal variation
 that change the type of the Harder-Narasimhan filtration. Explicitly,
 we have a holomorphic subbundle $\End'(E) \to \End(E)$ consisting of
 holomorphic endomorphisms of $E$ that preserve the Harder-Narasimhan filtration.
-Then we can identify $H^1_{\dbar}(X,\End'(E))$ with the infinitesimal varations
+Then we can identify $H^1_{\dbar}(X,\End'(E))$ with the infinitesimal variations
 consisting of the directions tangent to $\mathscr{C}_\mu(E)$. Furthermore, if
 we let $\End"(E)$ denote the quotient bundle $\End(E)/\End'(E)$,
 we can identify $\End"(E)$ with the holomorphic bundle endomorphism that do

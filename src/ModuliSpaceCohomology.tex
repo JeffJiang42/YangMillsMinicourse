@@ -18,7 +18,7 @@ and then compute the equivariant cohomology with respect to that group.
 %
 \begin{prop}
 Let $\dbar_E$ be a stable holomorphic structure on $E$. Then the stabilizer
-subgroup of $\dbar_E$ is the central subgroup $C^\times \subset \mathscr{G}_\C$.
+subgroup of $\dbar_E$ is the central subgroup $\C^\times \subset \mathscr{G}_\C$.
 \end{prop}
 %
 \begin{proof}
@@ -60,7 +60,7 @@ H^\bullet_{\mathscr{G}_\C}(\mathscr{C}_{ss}(E),\Z)
 The second point tells us that we may replace $\overline{\mathscr{G}}_\C$ with
 $\overline{\mathscr{G}}$ to compute $H^\bullet(N(n,k),\Z)$. To do this, we
 must first understand the cohomology of the classifying space
-$B\overline{\mathscr{G}}$. We need the folliwing theorem:
+$B\overline{\mathscr{G}}$. We need the following theorem:
 %
 \begin{thm}[\ib{Leray-Hirsch}]
 Let $E \to X$ be a fiber bundle with model fiber $F$ such that
@@ -92,7 +92,7 @@ give maps of classifying spaces $B\mathrm{U}_1 \to B\mathscr{G} \to B\mathrm{U}_
 inducing an isomorphism $H^\bullet(B \mathrm{U}_1,\Q) \to H^\bullet(B \mathrm{U}_1,\Q)$.
 Fix a point $x \in X$, and let $g \in \mathscr{G}$, which we interpret as a
 smooth bundle automorphism of $E$ preserving the Hermitian metric. Restricting $g$
-to the fiber $E_x$ and taking the derterminant gives us our group homomorphism
+to the fiber $E_x$ and taking the determinant gives us our group homomorphism
 $\mathscr{G} \to \mathrm{U}_1$. Since $E$ is rank $n$, this is a degree $n$
 map. Then pullback induced map $B \mathrm{U}_1 \to B\mathscr{G} \to B \mathrm{U}_1$
 multiplies the generator of $H^\bullet(B \mathrm{U}_1, \Q) \cong \Q[x]$ by $n$,
@@ -125,7 +125,7 @@ B \mathrm{U}_1 \ar[r] \ar[d,equals]& E\mathscr{G} \times_{\mathscr{G}} M \ar[r] 
 E\overline{\mathscr{G}} \times_{\overline{\mathscr{G}}} M \ar[d] \\
 B \mathrm{U}_1 \ar[r] & B\mathscr{G} \ar[r] & B\overline{\mathscr{G}}
 \end{tikzcd}\]
-From this, we can deduce that the map
+From this diagram, we can deduce that the map
 $B \mathrm{U}_1 \to E\mathscr{G}\times_{\mathscr{G}} M$ induces a surjection
 on rational cohomology, so we can apply Leray-Hirsch to the bundle
 $E\mathscr{G} \times_{\mathscr{G}} M
@@ -157,7 +157,7 @@ $n = 2$ and $k = 1$. We first take inventory of the facts and formulas we need.
   \[
   P_t(B\mathscr{G}) = \sum_{\mu}t^{k_\mu}P_{\mathscr{G}}(\mathscr{C}_\mu(E))
   \]
-  \item Let the $D_i$ be the succesive quotients coming from the Harder-Narasimhan
+  \item Let the $D_i$ be the successive quotients coming from the Harder-Narasimhan
   filtration of $E$. Then
   \[
   P_{t,\mathscr{G}}(\mathscr{C}_\mu(E))
@@ -170,7 +170,7 @@ $n = 2$ and $k = 1$. We first take inventory of the facts and formulas we need.
   \]
 \end{enumerate}
 %
-We now identify the possible Harder-Narasimhan types for a holomorphic strcture
+We now identify the possible Harder-Narasimhan types for a holomorphic structure
 on $E$. If $E$ is a semistable bundle, then its Harder-Narasimhan filtration
 is just $0 \subset E$, and the Harder-Narasimhan type is $(1/2,1/2)$. Otherwise,
 there exists an rank one subbundle $L \subset E$ with $\mu(L) > \mu(E) = 1/2$, and
@@ -186,7 +186,7 @@ P_{t,\mathscr{G}}(\mathscr{C}_r(E))
 \]
 We note that both $L$ and $E/L$ are both line bundles, which are automatically stable,
 so $\mathscr{C}_{ss}(L) = \mathscr{C}(L)$ and $\mathscr{C}_{ss}(E/L) = \mathscr{C}(E/L)$.
-Furthmore, our formula for the Poincar\'e series for the classifying space
+Furthermore, our formula for the Poincar\'e series for the classifying space
 for the gauge group of a line bundle gives us
 \[
 P_t(B\mathscr{G}(L)) = P_t(B\mathscr{G}(E/L)) = \frac{(1+t)^{2g}}{1-t^2}

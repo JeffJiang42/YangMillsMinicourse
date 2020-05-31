@@ -3,7 +3,7 @@
 %
 Good references for this material would be \cite{KobNom} and \cite{Tu} \\
 
-Fix a close manifold $X$ (compact and without boundary) and a Lie group $G$.
+Fix a closed manifold $X$ (compact and without boundary) and a Lie group $G$.
 %
 \begin{defn}
 A \ib{principal $G$-bundle} is a fiber bundle $\pi : P \to M$ with a smooth
@@ -36,7 +36,7 @@ of a $\GL_k\R$-torsor. Then let
 Using local trivializations of the vector bundle $E$, we equip $\B_{\GL_k\R}(E)$
 with the structure of a smooth manifold such that the map
 $\pi : \B_{\GL_k\R}(E) \to X$ taking $\B_x$ to $x$ is a submersion. This gives
-$\pi : \B_{GL_k\R} \to X$ the structure of a principal $\GL_k\R$-bundle, called
+$\pi : \B_{GL_k\R}(E) \to X$ the structure of a principal $\GL_k\R$-bundle, called
 the \ib{frame bundle} of $E$,  where the local trivializations are defined in terms of
 local trivializations of $E$.
 \end{exmp}
@@ -123,7 +123,7 @@ $\Gamma(X,E)$ denote the space of global sections, i.e. the space of
 smooth maps $f : X \to E$ such that $\pi \circ f = \id_X$, where
 $\pi : E \to X$ denotes the projection map. Then there is a bijective correspondence
 \[
-\Gamma(X,E) \longleftrightarrow \set{G-\text{equivariant maps } P \to F}
+\Gamma(X,E) \longleftrightarrow \set{G\text{-equivariant maps } P \to F}
 \]
 \end{prop}
 %
@@ -162,7 +162,7 @@ written uniquely as
 \omega = \omega^i \otimes e_i
 \]
 for $k$-forms $\omega^i \in \Omega^k_X$,so an $E$-valued $k$-form can be thought of
-as a vector of $k$-forms. We will usually omite the tensor symbol, and simply
+as a vector of $k$-forms. We will usually omit the tensor symbol, and simply
 write $\omega = \omega^ie_i$. However, this does not transform tensorially with
 respect to coordinate changes on $X$ unless $E$ is a trivial bundle. The
 components of the vector transform tensorially with respect to coordinate changes,
@@ -173,14 +173,16 @@ be
 \[
 \omega \wedge \eta \defeq  (\omega^i \wedge \eta^j)e_i \otimes e_j\
 \]
-which is an element of $\Omega^{k+\ell}_X(E \otimes E)$. \\
+which is an element of $\Omega^{k+\ell}_X(E \otimes E)$. In addition, the usual
+exterior derivative $d : \Omega^k_X \to \Omega^{k+1}_X$ extends to an operator on
+$\Omega^k_X(E)$, given locally by $d\omega = d\omega^ie_i$. \\
 
 For the most part, we will be concerned with Lie algebra valued forms,
 which are just $\g$-valued forms for a fixed Lie algebra $\g$. These
 forms have some additional operations coming from the Lie algebra structure
 of $\g$. Fix a basis $\set{\xi_i}$ for $\g$. This determines a global
 trivialization of the trivial bundle $X \times \g$, so any $\g$-valued
-$K$-form $\omega \in \Omega^k_X(\g)$ can be uniquely written as
+$k$-form $\omega \in \Omega^k_X(\g)$ can be uniquely written as
 $\omega = \omega^i\xi_i$. Let
 $\omega \in \Omega^k_X(\g)$ and $\eta \in \Omega^\ell_X(\g)$. Then define their
 bracket to be
@@ -193,8 +195,7 @@ In other words, it is the composition
 \Omega^{k+\ell}(\g)
 \end{tikzcd}\]
 where the first map is the wedge product, and the second map is induced by the
-Lie bracket. Finally, the usual exterior derivative $d : \Omega^k_X \to \Omega^{k+1}_X$
-extends to an operator on $\Omega^k_X(\g)$, given by $d\omega = d\omega^i\xi_i$. \\
+Lie bracket. \\
 
 We now discuss connections. Let $\pi : P \to X$ be a principal $G$-bundle, and
 let $\g$ be the Lie algebra of $G$. The projection map $\pi$ is a submersion,
@@ -208,7 +209,7 @@ of $P$, giving us an exact sequence of vector bundles over $P$
 \begin{defn}
 A \ib{connection} on $P$ is a distribution $H \subset TP$ such that
 \begin{enumerate}
-  \item $V \oplus H = TP$ \\
+  \item $V \oplus H = TP$
   \item $H_{p \cdot g} = d(R_g)_pH_p$, where $R_g : P \to P$ is the map
   $p \mapsto p\cdot g$.
 \end{enumerate}
@@ -221,17 +222,17 @@ The perspective of viewing a connection as a horizontal distribution is useful
 at times, but it is often more convenient for computations to rephrase a connection
 in terms of $\g$-valued forms. Let $\exp : \g \to G$ denote the exponential map.
 Given $X \in \g$ and $p \in P$, the exponential map determines a curve
-$\gamma_X$ with $\gamma_X(0) = p$ where
+$\gamma_{X,p}$ with $\gamma_X(0) = p$ where
 \[
-\gamma_X(t) \defeq p \cdot \mathrm{exp}(tX)
+\gamma_{X,p}(t) \defeq p \cdot \mathrm{exp}(tX)
 \]
 Since the action of $G$ preserves the fiber $P_{\pi(p)}$, the tangent vector
 \[
-\dt{\gamma}_X \defeq \frac{d}{dt}\bigg\vert_{t=0} \gamma_X(t)
+\dt{\gamma}_{X,p} \defeq \frac{d}{dt}\bigg\vert_{t=0} \gamma_{X,p}(t)
 \]
 lies in $V_p$. Furthermore, since the action of $G$ on $P$ is free,
-we have that $\dt{\gamma}_X = 0$ if and only if $X = 0$. Finally,
-the mapping $X \mapsto \dt{\gamma}_X$ is linear, so we have that this
+we have that $\dt{\gamma}_{X,p} = 0$ if and only if $X = 0$. Finally,
+the mapping $X \mapsto \dt{\gamma}_{X,p}$ is linear, so we have that this
 gives an isomorphism $\g \to V_p$ by a dimension count. Doing this
 over all $p \in P$, this gives an isomorphism of $V$ with the trivial bundle
 $P \times \g$. Because of this, we will implicitly identify elements of
@@ -264,15 +265,15 @@ when $E = P\times_G W$ is an associated bundle coming from a linear representati
 $\rho : G \to \GL(W)$.
 %
 \begin{prop}
-Let $P \to M$ be a principal bundle and $E$ the associated bundle coming from
+Let $P \to X$ be a principal bundle and $E$ the associated bundle coming from
 a linear representation $\rho : G \to \GL(W)$. Then there is a bijective
 correspondence
 \[
 \Omega^k_X(E) \leftrightarrow \set{\alpha \in \Omega^k_P(W) ~:~ R^*_g\alpha =
-\rho(g\inv)\alpha~,~ \iota_X\alpha = 0 \forall X \in \g}
+\rho(g\inv)\alpha~,~\forall X \in \g, ~\iota_X\alpha = 0}
 \]
 where we identify $X \in \g$ with its vertical vector field and
-$\iota_\xi$ denotes interior multiplication.
+$\iota_X$ denotes interior multiplication by $X$.
 \end{prop}
 %
 Morally, the correspondence comes from the fact that a form on $P$ descending
@@ -283,15 +284,9 @@ directions.
 Prove the previous proposition.
 \end{exer}
 %
-\begin{exer}
-Using the proposition above, prove that the space $\mathscr{A}(P)$ of connections
-is an affine space over $\Omega^1_X(\g_P)$, i.e. show that the difference
-$A_1 - A_2$ between two connections is an element of $\Omega^1_X(\g_P)$.
-\end{exer}
-%
 Now suppose we have a horizontal distribution $H \subset TP$. The decomposition
 $TP = V \oplus H$ gives us a projection map $TP \to V$ with kernel $H$.
-Identifying $V$ with $P \times \g$, the projection map can be idenfied with
+Identifying $V$ with $P \times \g$, the projection map can be identified with
 a $\g$-valued $1$-form $A \in \Omega^1_P(\g)$, called the
 \ib{connection $1$-form}. Using the transformation law for the vertical
 vector fields determined by $\g$, we get the following transformation law
@@ -342,6 +337,12 @@ The Maurer-Cartan form $\theta$ satisfies the \ib{Maurer-Cartan equation}
 \[
 d\theta + \frac{1}{2}[\theta\wedge\theta] = 0
 \]
+%
+\begin{exer}
+Using proposition 1.13, prove that the space $\mathscr{A}(P)$ of connections
+is an affine space over $\Omega^1_X(\g_P)$, i.e. show that the difference
+$A_1 - A_2$ between two connections is an element of $\Omega^1_X(\g_P)$.
+\end{exer}
 %
 \begin{defn}
 Let $A \in \mathscr{A}(P)$ be a connection. Then the \ib{curvature of $A$},
@@ -424,7 +425,7 @@ this notion with the exterior covariant derivative.
 \begin{defn}
 Let $E = P\times_G W$ be the associated vector bundle obtained from a
 linear representation $\rho : G \to \GL(W)$, and let $\dt{\rho} : \g \to \End(W)$
-denote the associated Lie algebra representation. The \ib{exterior covariant derviative}
+denote the associated Lie algebra representation. The \ib{exterior covariant derivative}
 is the map
 \begin{align*}
 d_A : \Omega^p_X(E) &\to \Omega^{p+1}_X(E) \\
@@ -443,7 +444,7 @@ this definition.
 For the most part, we will be concerned with situation when the vector
 bundle is $\g_P$, in which case, the formula is given by
 \[
-d_A\psi = d\psi + [A,\psi]
+d_A\psi = d\psi + [A\wedge\psi]
 \]
 Since $\mathscr{A}(P)$ is an affine space over $\Omega^1_X(\g_P)$, given
 a connection $A \in \mathscr{A}(P)$ and a $\g_P$-valued $1$-form
@@ -459,6 +460,6 @@ we have
 = \frac{d}{dt}\bigg\vert_{t=0}F_A + \frac{t^2}{2}[\eta\wedge\eta] + td_A\eta
 = d_A\eta
 \]
-So the exterior covariant derivative on $\g_P$ measures the infitesimal
+So the exterior covariant derivative on $\g_P$ measures the infinitesimal
 change of the curvature of $A$ in the direction $\eta$.
 %
