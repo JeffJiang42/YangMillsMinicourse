@@ -86,7 +86,7 @@ by $B \mathrm{U}_1 \to B\mathscr{G}$ induces a surjection
 \[
 H^\bullet(B\mathscr{G},\Q) \to H^\bullet(B \mathrm{U}_1, \Q)
 \]
-To do this, we provide a group homomorphism $\overline{\mathscr{G}} \to \mathrm{U}_1$,
+To do this, we provide a group homomorphism $\mathscr{G} \to \mathrm{U}_1$,
 such that the composition $\mathrm{U}_1 \hookrightarrow \mathscr{G} \to \mathrm{U}_1$
 give maps of classifying spaces $B\mathrm{U}_1 \to B\mathscr{G} \to B\mathrm{U}_1$
 inducing an isomorphism $H^\bullet(B \mathrm{U}_1,\Q) \to H^\bullet(B \mathrm{U}_1,\Q)$.
@@ -143,7 +143,7 @@ In our specific case, letting $M = \mathscr{C}_{ss}(E)$, we get
 \[
 P_t(N(n,k)) = (1-t^2)P_{t,\mathscr{G}}(\mathscr{C}_{ss}(E))
 \]
-In theory, this gives us all the results we need to compute the Ponicar\'e
+In theory, this gives us all the results we need to compute the Poincar\'e
 series for $N(n,k)$. However, it is not immediately clear how the pieces
 fit together. To get a better idea, we will worth through the case
 $n = 2$ and $k = 1$. We first take inventory of the facts and formulas we need.
@@ -166,7 +166,7 @@ $n = 2$ and $k = 1$. We first take inventory of the facts and formulas we need.
   \item Let $n_i = \dim D_i$ and $k_i = \deg(D_i)$. Then the codimension
   of the strata $\mathscr{C}_\mu(E)$ is given by
   \[
-  2\sum_{i > j}n_ik_j-k_in)j + n_in_j(g-1)
+  2\sum_{i > j}n_ik_j-k_in_j + n_in_j(g-1)
   \]
 \end{enumerate}
 %
@@ -184,10 +184,11 @@ to the type $(r+1,-r)$. Then we have
 P_{t,\mathscr{G}}(\mathscr{C}_r(E))
 = P_{t,\mathscr{G}(L)}(\mathscr{C}_{ss}(L)) P_{t,\mathscr{G}(E/L)}(\mathscr{C}_{ss}(E/L))
 \]
-We note that both $L$ and $E/L$ are both line bundles, which are automatically stable,
-so $\mathscr{C}_{ss}(L) = \mathscr{C}(L)$ and $\mathscr{C}_{ss}(E/L) = \mathscr{C}(E/L)$.
-Furthermore, our formula for the Poincar\'e series for the classifying space
-for the gauge group of a line bundle gives us
+We note that both $L$ and $E/L$ are both line bundles, so any holomorphic structure
+is automatically stable. Therefore, $\mathscr{C}_{ss}(L) = \mathscr{C}(L)$ and
+$\mathscr{C}_{ss}(E/L) = \mathscr{C}(E/L)$. Furthermore, our formula for the
+Poincar\'e series for the classifying space for the gauge group of a line bundle
+gives us
 \[
 P_t(B\mathscr{G}(L)) = P_t(B\mathscr{G}(E/L)) = \frac{(1+t)^{2g}}{1-t^2}
 \]
@@ -207,7 +208,7 @@ Putting everything together, we get the following identity
 \]
 After some manipulations and rearranging, this becomes
 \[
-P_{t, \mathscr{G}}(\mathscr{C}_{ss})(E)
+P_{t, \mathscr{G}}(\mathscr{C}_{ss}(E))
 = \frac{(1+t)^{2g}(1+t^3)^{2g}-t^{2g}(1+t)^{4g}}{(1-t^4)(1-t^2)^2}
 \]
 Finally, using the relationship between $\mathscr{G}$-equivariant cohomology

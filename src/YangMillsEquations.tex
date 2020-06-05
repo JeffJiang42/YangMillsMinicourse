@@ -2,13 +2,14 @@
 \section{The Yang-Mills Equations}
 %
 To discuss the Yang-Mills equations, we will restrict to compact Lie groups
-$G$. As before, $X$ will denote an $n$-dimensional closed smooth manifold. \\
+$G$. As before, $X$ will denote an $n$-dimensional orientable closed smooth manifold. \\
 
 Since $G$ is compact, its Lie algebra $\g$ is semisimple, so the Killing
 form $\langle\cdot,\cdot\rangle : \g \otimes \g \to \R$ is nondegenerate.
 For the rest of our discussion, $\langle\cdot,\cdot\rangle$ can be replaced by
 any inner product invariant under the Adjoint action, though it does us no
-harm to assume that it is the Killing form.
+harm to assume that it is the Killing form (up to changing signs to make it
+positive definite).
 %
 \begin{lem}
 Let $\langle\cdot,\cdot\rangle$ denote any Adjoint invariant inner product on $\g$.
@@ -35,7 +36,7 @@ this fiber metric descends to a fiber metric on $\g_P$. This gives
 us pairings
 \begin{align*}
 \Omega^k_X(\g_P) \otimes \Omega^\ell_X(\g_P) &\to \Omega^{k+\ell}_X \\
-\omega \otimes \eta &\mapsto \langle\omega,\eta\rangle
+\omega \otimes \eta &\mapsto \langle\omega\wedge\eta\rangle
 \end{align*}
 We now fix an orientation and a Riemannian metric $g$ on $X$. This gives us:
 \begin{enumerate}
@@ -71,7 +72,7 @@ We provide maps in both directions. Suppose we have an automorphism
 $\varphi : P \to P$. Since $\pi = \pi \circ \varphi$, the map $\varphi$ preserves
 the fibers of $\pi$. Therefore, for any $p \in P$, we have that
 $p$ and $\varphi(p)$ differ by the action of some $g_p \in G$. The mapping
-$g_\varphi : P \to G$ taking $p \mapsto g_p$ is easilty verified to be
+$g_\varphi : P \to G$ taking $p \mapsto g_p$ is easily verified to be
 equivariant with respect to the conjugation action of $G$, so it defines
 a section of $\Ad P$ \\
 
@@ -87,17 +88,17 @@ subspace $\mathscr{A}(P) \subset \Omega^1_P(\g)$.
 %
 \begin{prop}
 For a connection $A \in \mathscr{A}(P)$ and a gauge transformation
-$\varphi : P \to P$, we have
+$\varphi : P \to P$, let $g_\varphi : P \to G$ denote the equivariant map
+associated to $\varphi$, then show:
+\[
+\varphi^*A = \Ad_{g\inv_\varphi A} + g_\varphi^*\theta
+\]
+where $\theta \in \Omega^1_G(\g)$ is the Maurer-Cartan form. In particular, we have
 \begin{enumerate}
   \item $R_g^*A = \Ad_{g\inv}\varphi^*A$.
   \item $\iota_X\varphi^*A = X$ for all $X \in \g$.
 \end{enumerate}
-Equivalently, if we let $g_\varphi : P \to G$ denote the equivariant map
-associated to $\varphi$, we have
-\[
-\varphi^*A = \Ad_{g\inv_\varphi A} + g_\varphi^*\theta
-\]
-where $\theta \in \Omega^1_G(\g)$ is the Maurer-Cartan form.
+So $\varphi^*A$ is again a connection.
 \end{prop}
 %
 \begin{exer}
@@ -176,13 +177,13 @@ d_A\star F_A = 0
 \begin{proof}
 Let $\eta \in \Omega^1_X(\g_P)$. We then compute
 \begin{align*}
-L(A) &= \int_X \langle F_{A+t\eta}\wedge\star F_{A+t\eta} \\
+L(A+\eta) &= \int_X \langle F_{A+t\eta}\wedge\star F_{A+t\eta}\rangle \\
 &= \int_X\langle F_A + \frac{t^2}{2}[\eta\wedge\eta] + td_A\eta\wedge
 \star(F_A + \frac{t^2}{2}[\eta\wedge\eta] + td_A\eta)
 \end{align*}
 The term linear in $t$ is
 \[
-\int_X \langle F_A\wedge\star d_A\eta + \langle d_A\eta\wedge\star F_A\rangle =
+\int_X \langle F_A\wedge\star d_A\eta\rangle + \langle d_A\eta\wedge\star F_A\rangle =
 2(F_A,d_A\eta)
 \]
 Then let $d^*_A = (-1)^{2n+1}\star d_A\star$ denote the formal adjoint to

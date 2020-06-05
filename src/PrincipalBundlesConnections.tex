@@ -111,7 +111,7 @@ the Yang-Mills equations.
 \end{enumerate}
 Confusingly, the former is sometimes called the ``Adjoint bundle" and the
 latter is sometimes called the ``adjoint bundle," which makes it admittedly
-hard to distuinguish between them when speaking.
+hard to distinguish between them when speaking.
 \end{exmp}
 %
 Associated bundles have another nice feature -- their sections have
@@ -174,9 +174,13 @@ be
 \omega \wedge \eta \defeq  (\omega^i \wedge \eta^j)e_i \otimes e_j\
 \]
 which is an element of $\Omega^{k+\ell}_X(E \otimes E)$. In addition, the usual
-exterior derivative $d : \Omega^k_X \to \Omega^{k+1}_X$ extends to an operator on
-$\Omega^k_X(E)$, given locally by $d\omega = d\omega^ie_i$. \\
-
+exterior derivative $d : \Omega^k_X \to \Omega^{k+1}_X$ gives us a local
+definition
+\[
+d\omega = d\omega^ie_i
+\]
+However, this is dependent on our choice of frame, and does not give a well
+defined operator $\Omega^k_X(E) \to \Omega^{k+1}_X(E)$.
 For the most part, we will be concerned with Lie algebra valued forms,
 which are just $\g$-valued forms for a fixed Lie algebra $\g$. These
 forms have some additional operations coming from the Lie algebra structure
@@ -321,10 +325,11 @@ of $\mathscr{A}(P)$ with the subset of $\Omega^1_P(\g)$ satisfying the condition
 \end{enumerate}
 %
 The second condition can be rephrased in terms of the \ib{Maurer-Cartan form}
-$\theta \in \Omega^1_G(\g)$, which is defined by
-\[
-\theta_g(v) = (dL_{g\inv})_g(v)
-\]
+$\theta \in \Omega^1_G(\g)$, which is defined by the properties:
+\begin{enumerate}
+  \item $\theta_e = \id_{\g}$.
+  \item $\theta_g(v) = (dL_{g\inv})_g(v)$.
+\end{enumerate}
 where $L_{g\inv} : G \to G$ is left multiplication by $g\inv$. The action
 of $G$ on any $G$-torsor $X$ gives us a Maurer-Cartan form on $X$.
 %
@@ -428,7 +433,7 @@ linear representation $\rho : G \to \GL(W)$, and let $\dt{\rho} : \g \to \End(W)
 denote the associated Lie algebra representation. The \ib{exterior covariant derivative}
 is the map
 \begin{align*}
-d_A : \Omega^p_X(E) &\to \Omega^{p+1}_X(E) \\
+d_A : \Omega^k_X(E) &\to \Omega^{k+1}_X(E) \\
 \psi &\mapsto d\psi + \dt\rho(A) \wedge \psi
 \end{align*}
 \end{defn}

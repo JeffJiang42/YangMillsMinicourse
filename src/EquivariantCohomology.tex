@@ -88,17 +88,26 @@ If the action of $G$ on $X$ is free, then the map $EG\times_G X \to X/G$
 is a homotopy equivalence.
 \end{cor}
 %
+Another useful fact we will use:
+%
 \begin{cor}
 If $X$ is contractible, then $H^\bullet_G(X,\Z) = H^\bullet(BG,\Z)$.
 \end{cor}
 %
 \begin{proof}
-The map $EG\times_G X \to X/G$ is a fiber bundle with contractible fiber $EG$, so it
-is a homotopy equivalence.
+\[
+H^\bullet_G(X,\Z) = H^\bullet_G(EG\times_G X, \Z) \cong H^\bullet(EG/G,\Z)
+\cong H^\bullet(BG,\Z)
+\]
 \end{proof}
 %
 We now return to the computation of the cohomology of $N(n,k)$. The heavy
 lifting for this computation comes from the following theorems:
+%
+\begin{thm}
+The Harder-Narasimhan strata have no torsion in $\mathscr{G}_\C$-equivariant
+cohomology.
+\end{thm}
 %
 \begin{thm}
 Let $E \to X$ be a holomorphic vector bundle with Harder-Narasimhan filtration
@@ -139,19 +148,20 @@ P_{t,\mathscr{G}_\C}(\mathscr{C}(E))
 \begin{thm}
 The Poincar\'e series for $B\mathscr{G}_\C$ is
 \[
-P_t(\mathscr{G}_\C) = \frac{\prod^n_{k=1}(1+t^{2k-1})^2g}
-{(1-t^2n)\prod_{k=1}^{n-1}(1-t^{2k})^2}
+P_t(\mathscr{G}_\C) = \frac{\prod^n_{k=1}(1+t^{2k-1})^{2g}}
+{(1-t^{2n})\prod_{k=1}^{n-1}(1-t^{2k})^2}
 \]
 where $g$ is the genus of $X$.
 \end{thm}
 %
-The first theorem tell us that we can understand the $\mathscr{G}_\C$-equivariant
+The first theorem tells us that we can work rationally if we need to.
+The second theorem tell us that we can understand the $\mathscr{G}_\C$-equivariant
 cohomology of the strata by understanding the $\mathscr{G}_\C$-equivariant
 cohomology of the semistable strata for lower dimensional bundles,
 which will give us an inductive procedure for computing the Poincar\'e series.
-The second theorem tells us that the equivariant cohomology of
+The third theorem tells us that the equivariant cohomology of
 the entire space is a simple expression in terms of the equivariant cohomology
-of the strata. Since $\mathscr{C}(E)$ is contractible, the third
+of the strata. Since $\mathscr{C}(E)$ is contractible, the fourth
 theorem tells us that if we can compute the equivariant cohomology of
 all the strata except for the semistable locus, then we can compute the
 equivariant cohomology of the semistable strata. \\
@@ -270,7 +280,7 @@ giving us
 \]
 Putting everything together gives us
 \[
-\dim(H^1_{\dbar}(X,\End"(E))) = \sum_{i > j}n_ik_j-k_in)j + n_in_j(g-1)
+\dim(H^1_{\dbar}(X,\End"(E))) = \sum_{i > j}n_ik_j-k_in_j + n_in_j(g-1)
 \]
 which by our earlier discussion, is the complex codimension of the strata
 $\mathscr{C}_\mu(E)$.

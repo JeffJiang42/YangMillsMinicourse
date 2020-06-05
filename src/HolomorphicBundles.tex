@@ -14,22 +14,24 @@ Given a holomorphic vector bundle $E \to X$, we can find a trivialization
 of $E$ such that the transition functions are holomorphic. In a neighborhood
 $U \subset X$ such that $E\vert_U$ is trivial, the smooth sections can
 be identified with functions $U \to \C^n$, and the holomorphic sections
-can be identified with the holomorphic functions $U \to \C^n$. We
+can be identified with holomorphic functions $U \to \C^n$. We
 have a local operator $\dbar$, which we can apply componentwise to a local
 section to get an operator on smooth sections over $U$. Furthermore, since
 $\dbar$ annihilates holomorphic functions and the transition functions
 are holomorphic, we have that $\dbar$ glues to a well defined operator
-$\dbar_E : \mathcal{A}^0_X(E) \to \mathcal{A}^{0,1}_X(E)$. The holomorphic sections of $E$
-are then exactly the sections annihilated by $\dbar_E$. Furthermore, the operator
-$\dbar_E$ extends to operators $\dbar_E : \mathcal{A}^k_X(E) \to \mathcal{A}^{k+1}_X(E)$,
-and satifies the condition $\dbar_E^2 = 0$, since $\dbar^2 = 0$. The punchline
+$\dbar_E : \mathcal{A}^0_X(E) \to \mathcal{A}^{0,1}_X(E)$. The holomorphic
+sections of $E$ are then exactly the sections annihilated by $\dbar_E$. Furthermore,
+the operator $\dbar_E$ extends to operators
+$\dbar_E : \mathcal{A}^k_X(E) \to \mathcal{A}^{k+1}_X(E)$,
+and satisfies the condition $\dbar_E^2 = 0$, since $\dbar^2 = 0$. The punchline
 is that the holomorphic structure on $E$ is entirely determined by this operator.
 %
 \begin{thm}
 Let $\pi : E \to X$ be a $C^\infty$ complex vector bundle, and let
-$D : \mathcal{A}^0_X(E) \to \mathcal{A}^{0,1}(E)$ be an operator satifying
-$D^2 = 0$. Then there exists a unique complex structure on $E$
-such that $\pi$ is holomorphic and $D$ coincides with the operator $\dbar_E$.
+$D : \mathcal{A}^0_X(E) \to \mathcal{A}^{0,1}(E)$ be an operator satisfying the
+Leibniz rule and $D^2 = 0$. Then there exists a unique complex structure on $E$
+such that $\pi$ is holomorphic and the holomorphic sections are exactly the ones
+annihilated by $D$.
 \end{thm}
 %
 This can be seen as a linearized version of the Newlander-Nirenberg theorem.
@@ -43,7 +45,7 @@ we can write
 \]
 where $B$ is a smooth $\mathrm{M}_n\C$-valued $(0,1)$-form. Indeed,
 we have that the space of holomorphic structures on a smooth vector bundle
-$E \to X$ is an affine space over $\mathcal{A}^{1,0}(\End E)$. We
+$E \to X$ is an affine space over $\mathcal{A}^{0,1}(\End E)$. We
 let $\mathscr{C}(E)$ denote the space of holomorphic structures on $E$.\\
 
 We now restrict to the case where $X$ is a Riemann surface.
@@ -168,7 +170,7 @@ to be true, and is an infinite dimensional version of the relationship between
 a GIT quotient and a symplectic quotient. To investigate further, we make a short
 digression regarding this relationship. \\
 
-Let $G$ be a reductive complex group, and $X$ a K\"ahler manifold with K\"ahler
+Let $G$ be a reductive complex group, and $X$ a compact K\"ahler manifold with K\"ahler
 metric $\omega$, equipped with a ``nice" action of $G$. In the usual setting,
 $X$ is a smooth projective variety with a fixed embedding $X \hookrightarrow \CP^N$,
 the K\"ahler metric $\omega$ is the restriction of the Fubini-Study form,
@@ -186,7 +188,7 @@ the Lie algebra homomorphism $\mathfrak{k} \to \mathfrak{X}(X)$ (where
 $\mathfrak{X}(X)$ denotes the space of vector fields on $X$) defined by
 $\xi \mapsto X_\xi$ where
 \[
-(X_\xi)_p \defeq \frac{d}{dt}\bigg\vert_{t=0}\mathrm{exp}(t\xi)\cdot p
+(X_\xi)_p \defeq \frac{d}{dt}\bigg\vert_{t=0}p\cdot \exp(t\xi)
 \]
 \begin{defn}
 A symplectic action of $K$ on $X$ is \ib{Hamiltonian} if for each
@@ -197,13 +199,13 @@ such that for all $p \in X$ and $v \in T_pX$, we have
 \]
 and the mapping $\xi \mapsto H_\xi$ is $K$-equivariant with respect
 to the right actions of $K$ on $\mathfrak{k}$ by the Adjoint action
-and precomposition with left translation $L_k$ on $C^\infty(X)$. The
+and precomposition with right translation $R_k$ on $C^\infty(X)$. The
 functions $H_\xi$ are called \ib{Hamiltonian functions}.
 \end{defn}
 %
 \begin{defn}
 Suppose we have a Hamiltonian action of $K$ on $X$. A \ib{moment map}
-for the action is a $K$-equivariant map $X \to \mathfrak{k}^*$ (where the
+for the action is a $K$-equivariant map $\mu : X \to \mathfrak{k}^*$ (where the
 action on $\mathfrak{k}$ is the coadjoint action) such
 that for any $p \in X$, $v \in T_pX$, and $\xi \in \mathfrak{k}$, we have
 \[
@@ -333,7 +335,7 @@ The last missing piece is something analogous to the Kempf-Ness theorem.
 %
 \begin{thm}[\ib{Narasimhan-Seshadri}]
 Let $\mathscr{A}_s(P) \subset \mathscr{A}(P)$ denote the subspace of connections
-that are absolute minimal for the Yang-Mills functional, and correspond
+that are absolute minima for the Yang-Mills functional, and correspond
 to irreducible representations $\Gamma_\R \to \mathrm{U}_n$. Let $\mathscr{C}_s(E)$
 denote the subspace of stable holomorphic structures on $E$. The isomorphism
 classes of holomorphic bundles in $\mathscr{C}_s(E)$ admit unique
